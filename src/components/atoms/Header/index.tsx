@@ -1,10 +1,8 @@
-import { Container, Link, LinkGroup, Logo } from "./styles"
-import LogoReact from './../../assets/logo_react.png'
+import { Container, Link, LinkGroup } from "./styles"
 
 export const Header = () => {
     return (
         <Container>
-            <Logo src={LogoReact} />
             <LinkGroup>
                 <Link>Home</Link>
                 <Link>Serviços</Link>

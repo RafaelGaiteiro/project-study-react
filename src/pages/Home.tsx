@@ -1,9 +1,9 @@
-import { Header } from '../components/Header'
+import { DefaultTemplate } from '../components/templates/DefaultTemplate'
 
 export const Home = () => {
     return (
-        <div>
-            <Header />
-        </div>
+        <DefaultTemplate>
+
+        </DefaultTemplate>
     )
 }
