@@ -12,9 +12,8 @@ export const DefaultTemplate = ({ children }: DefaultTemplateProps) => {
     return (
         <Container>
             <Header />
-            <Content />
+            <Content>{children}</Content>
             <Aside />
-            {children}
         </Container>
     )
 }

@@ -1,9 +1,14 @@
 import { Container } from "./styles"
+import { ReactNode } from 'react'
 
-export const Content = () => {
+type ContentProps = {
+    children: ReactNode;
+}
+
+export const Content = ({ children }: ContentProps) => {
     return (
         <Container>
-CT
+            {children}
         </Container>
     )
 }
