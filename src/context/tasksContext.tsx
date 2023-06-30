@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useContext } from "react";
+import { ReactNode, createContext, useContext, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 interface ITask {
@@ -13,30 +13,34 @@ interface ITasksContext {
   removeTask: (taskId: string) => void;
 }
 
-const TasksContext = createContext<ITasksContext>(
-  {} as ITasksContext
-);
+const TasksContext = createContext<ITasksContext>({} as ITasksContext);
 
 type TasksProviderProps = {
   children: ReactNode;
 };
 
-const TasksProvider = ({ children }: TasksProvider) => {
-  const addTask = (taskId: string) => {};
-  const removeTask = (taskId: string) => {};
+const TasksProvider = ({ children }: TasksProviderProps) => {
+  const [tasks, setTasks] = useState<ITask[]>([]);
+
+  const addTask = (title: string, description: string) => {
+    setTasks((prevTasks) => [
+      // Spread Operator - mantém as tasks atuais e acrescenta uma nova task no final
+      ...prevTasks
+    ])
+  };
+
+  const removeTask = (taskId: string) => { };
 
   return (
-    <TasksContext.Provider
-      value={{ taskTitle, taskDescription, addTask, removeTask }}
-    >
+    <TasksContext.Provider value={{ tasks, addTask, removeTask }}>
       {children}
     </TasksContext.Provider>
   );
 };
 
 export const useTasks(): ITasksContext {
-    const context = useContext(TasksContext);
-    return context;
+  const context = useContext(TasksContext);
+  return context;
 }
 
 export { TasksProvider, useTasks };
