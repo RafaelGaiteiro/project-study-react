@@ -5,11 +5,20 @@ import { Button } from "../../atoms/Button";
 import { useState } from "react";
 import { useTasks } from "../../../context/TasksContext";
 import { InputGroup } from "../../atoms/InputGroup";
+import { Message } from "../../atoms/Message";
 
 export const NewTasks = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const { addTask } = useTasks();
+  const [showNewMessage, setShowNewMessage] = useState<boolean>(false);
+  const { addTask, showRemoveMessage } = useTasks();
+
+  function handleSendMessage() {
+    addTask(title, description);
+    setShowNewMessage(true);
+
+    setTimeout(() => setShowNewMessage(false), 3000);
+  }
 
   return (
     <Container
@@ -35,7 +44,19 @@ export const NewTasks = () => {
           onChange={(event) => setDescription(event.target.value)}
         />
       </InputGroup>
-      <Button onClick={() => addTask(title, description)}>Adicionar</Button>
+      <Container display="flex" width="100%" gap="10px">
+        <Button onClick={handleSendMessage}>Adicionar</Button>
+        {showNewMessage ? (
+          <Message backgroundcolor="#2bc990">
+            Nova tarefa criado com sucesso!
+          </Message>
+        ) : null}
+        {showRemoveMessage ? (
+          <Message backgroundcolor="#a3080c">
+            Nova tarefa criado com sucesso!
+          </Message>
+        ) : null}
+      </Container>
     </Container>
   );
 };

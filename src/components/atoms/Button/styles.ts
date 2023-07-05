@@ -11,4 +11,10 @@ export const ButtonComponent = styled.button`
   -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
   user-select: none; /* Standard syntax */
+
+  transition: 0.5s all;
+
+  &&:active {
+    transform: scale(1.1);
+  }
 `;

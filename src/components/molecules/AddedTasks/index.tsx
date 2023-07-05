@@ -1,10 +1,18 @@
+import { useState } from "react";
 import { Text, TaskCard } from "./styles";
 import { Container } from "../../atoms/Container";
 import { useTasks } from "../../../context/TasksContext";
 import { Button } from "../../atoms/Button";
 
 export const AddedTasks = () => {
-  const { tasks, removeTask } = useTasks();
+  const { tasks, removeTask, setShowRemoveMessage } = useTasks();
+
+  function handleSendMessage(id: string) {
+    removeTask(id);
+
+    setShowRemoveMessage(true);
+    setTimeout(() => setShowRemoveMessage(false), 3000);
+  }
 
   return (
     <Container
@@ -19,7 +27,7 @@ export const AddedTasks = () => {
         <TaskCard key={task.id}>
           <Text>{task.title}</Text>
           <Text>{task.description}</Text>
-          <Button onClick={() => removeTask(task.id)}>Remover</Button>
+          <Button onClick={() => handleSendMessage(task.id)}>Remover</Button>
         </TaskCard>
       ))}
     </Container>

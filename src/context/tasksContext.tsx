@@ -14,6 +14,8 @@ interface ITasksContext {
   tasks: ITask[];
   addTask: (title: string, description: string) => void;
   removeTask: (id: string) => void;
+  showRemoveMessage: boolean;
+  setShowRemoveMessage: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 // Criando o contexto com a interface ITasksContext
@@ -28,6 +30,7 @@ type TasksProviderProps = {
 const TasksProvider = ({ children }: TasksProviderProps) => {
   // Utilizando o hook useState para gerenciar as tarefas
   const [tasks, setTasks] = useState<ITask[]>([]);
+  const [showRemoveMessage, setShowRemoveMessage] = useState<boolean>(false);
 
   // Definindo a função para adicionar uma tarefa
   const addTask = (title: string, description: string) => {
@@ -52,7 +55,15 @@ const TasksProvider = ({ children }: TasksProviderProps) => {
 
   // Retornando o Provedor de contexto que contém as tarefas e as funções para adicionar e remover tarefas
   return (
-    <TasksContext.Provider value={{ tasks, addTask, removeTask }}>
+    <TasksContext.Provider
+      value={{
+        tasks,
+        showRemoveMessage,
+        setShowRemoveMessage,
+        addTask,
+        removeTask,
+      }}
+    >
       {children}
     </TasksContext.Provider>
   );

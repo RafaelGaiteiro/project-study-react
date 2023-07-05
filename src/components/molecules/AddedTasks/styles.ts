@@ -23,7 +23,7 @@ export const Text = styled.p`
   background-color: #22a0a0;
   color: white;
   font-size: 13px;
-  font-weight: 400;
+  font-weight: 500;
   padding: 10px;
   border-radius: 10px;
 `;
