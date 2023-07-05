@@ -9,7 +9,7 @@ export const TaskCard = styled.div`
   background-color: #1c828a;
   padding: 10px;
   border-radius: 5px;
-  width: 50%;
+  width: 100%;
   transition: 0.2s;
   transform: translate(0px);
 

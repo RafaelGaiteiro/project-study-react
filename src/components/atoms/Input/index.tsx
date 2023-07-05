@@ -13,7 +13,7 @@ export const Input = ({ ...props }: IInputProps) => {
   return (
     <InputComponent
       {...props}
-      borderColor={borderColor}
+      bordercolor={borderColor}
       onFocus={() => setBorderColor(true)}
       onBlur={() => setBorderColor(false)}
     />

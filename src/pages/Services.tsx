@@ -1,9 +1,9 @@
 import { DefaultTemplate } from "../components/templates/DefaultTemplate";
 
-export const Home = () => {
+export const Services = () => {
   return (
     <DefaultTemplate>
-      <h1>Home</h1>
+      <h1>Services</h1>
     </DefaultTemplate>
   );
 };

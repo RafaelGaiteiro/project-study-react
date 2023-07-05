@@ -13,6 +13,7 @@ export const AddedTasks = () => {
       alignitems="center"
       gap="10px"
       flexwrap="wrap"
+      width="50%"
     >
       {tasks.map((task) => (
         <TaskCard key={task.id}>

@@ -17,6 +17,7 @@ export const NewTasks = () => {
       flexdirection="column"
       gap="10px"
       margin="0 0 10px 0"
+      width="50%"
     >
       <InputGroup>
         <Label>Título</Label>
