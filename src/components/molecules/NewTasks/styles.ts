@@ -14,10 +14,3 @@ export const Label = styled.label`
   font-weight: 500;
   text-transform: uppercase;
 `;
-
-export const Button = styled.button`
-  font-size: 13px;
-  font-weight: 400;
-  padding: 10px;
-  border-radius: 10px;
-`;

@@ -1,16 +1,14 @@
-import { Button, InputGroup, Label } from "./styles";
+import { InputGroup, Label } from "./styles";
 import { Container } from "../../atoms/Container";
 import { Input } from "../../atoms/Input";
+import { Button } from "../../atoms/Button";
 import { useState } from "react";
+import { useTasks } from "../../../context/TasksContext";
 
 export const NewTasks = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-
-  function handleAddTask() {
-    console.log(title);
-    console.log(description);
-  }
+  const { addTask } = useTasks();
 
   return (
     <Container>
@@ -30,7 +28,7 @@ export const NewTasks = () => {
           onChange={(event) => setDescription(event.target.value)}
         />
       </InputGroup>
-      <Button onClick={handleAddTask}>Adicionar</Button>
+      <Button onClick={() => addTask(title, description)}>Adicionar</Button>
     </Container>
   );
 };

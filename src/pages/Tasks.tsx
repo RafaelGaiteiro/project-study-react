@@ -6,7 +6,7 @@ export const Tasks = () => {
   return (
     <DefaultTemplate>
       <NewTasks />
-      {/* <AddedTasks /> */}
+      <AddedTasks />
     </DefaultTemplate>
   );
 };
