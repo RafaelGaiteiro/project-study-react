@@ -1,11 +1,21 @@
+import { useState } from "react";
 import { InputComponent } from "./styles";
 
-interface IInputProps {
+export interface IInputProps {
   type: string;
   placeholder: string;
   onChange: React.ChangeEventHandler<HTMLInputElement> | undefined;
 }
 
 export const Input = ({ ...props }: IInputProps) => {
-  return <InputComponent {...props} />;
+  const [borderColor, setBorderColor] = useState<boolean>(false);
+
+  return (
+    <InputComponent
+      {...props}
+      borderColor={borderColor}
+      onFocus={() => setBorderColor(true)}
+      onBlur={() => setBorderColor(false)}
+    />
+  );
 };

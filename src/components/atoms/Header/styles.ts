@@ -7,7 +7,7 @@ export const Container = styled.div`
   align-items: center;
   gap: 10px;
 
-  background-color: #120909;
+  background-color: #0c2e43;
 `;
 
 export const Logo = styled.img`
@@ -30,8 +30,12 @@ export const Link = styled.li`
   padding: 5px;
   transition: 0.3s;
 
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+
   &&:hover {
-    background-color: #0989a8;
+    background-color: #1a6e84;
     color: white;
     padding: 5px;
     border-radius: 5px;
@@ -40,6 +44,6 @@ export const Link = styled.li`
 
   &&:active {
     transition: none;
-    background-color: #11242f;
+    background-color: #154c5e;
   }
 `;

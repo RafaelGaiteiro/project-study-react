@@ -11,7 +11,12 @@ export const NewTasks = () => {
   const { addTask } = useTasks();
 
   return (
-    <Container>
+    <Container
+      display="flex"
+      flexdirection="column"
+      gap="10px"
+      margin="0 0 10px 0"
+    >
       <InputGroup>
         <Label>Título</Label>
         <Input

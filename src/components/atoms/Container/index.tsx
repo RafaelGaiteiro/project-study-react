@@ -5,6 +5,7 @@ export interface IContainerProps {
   children: ReactNode;
   display?: string;
   justifycontent?: string;
+  flexdirection?: string;
   alignitems?: string;
   gap?: string;
   rowgap?: string;
@@ -13,6 +14,7 @@ export interface IContainerProps {
   width?: string;
   padding?: string;
   margin?: string;
+  flexwrap?: "nowrap" | "wrap" | "wrap-reverse";
 }
 
 export const Container = ({ children, ...props }: IContainerProps) => {

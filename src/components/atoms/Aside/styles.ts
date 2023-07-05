@@ -7,7 +7,7 @@ export const Container = styled.div`
   justify-content: center;
   padding: 10px;
 
-  background-color: #120909;
+  background-color: #0c2e43;
   height: 100vh;
   width: 100%;
 `;
