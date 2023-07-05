@@ -1,9 +1,10 @@
-import { InputGroup, Label } from "./styles";
+import { Label } from "./styles";
 import { Container } from "../../atoms/Container";
 import { Input } from "../../atoms/Input";
 import { Button } from "../../atoms/Button";
 import { useState } from "react";
 import { useTasks } from "../../../context/TasksContext";
+import { InputGroup } from "../../atoms/InputGroup";
 
 export const NewTasks = () => {
   const [title, setTitle] = useState("");

@@ -6,15 +6,22 @@ export const TaskCard = styled.div`
   align-items: center;
   column-gap: 10px;
   flex-direction: row;
-  background-color: #23a2ad;
+  background-color: #1c828a;
   padding: 10px;
   border-radius: 5px;
   width: 50%;
+  transition: 0.2s;
+  transform: translate(0px);
+
+  &&:hover {
+    transform: translate(3px);
+  }
 `;
 
 export const Text = styled.p`
   width: 100%;
-  background-color: #2bc8c8;
+  background-color: #22a0a0;
+  color: white;
   font-size: 13px;
   font-weight: 400;
   padding: 10px;

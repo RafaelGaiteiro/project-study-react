@@ -7,7 +7,7 @@ export const Container = styled.div`
   align-items: center;
   gap: 10px;
 
-  background-color: #0c2e43;
+  background-color: #0a2536;
 `;
 
 export const Logo = styled.img`
