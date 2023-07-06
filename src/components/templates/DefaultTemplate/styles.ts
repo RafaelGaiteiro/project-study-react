@@ -8,4 +8,5 @@ export const Container = styled.div`
   grid-template-rows: 80px auto;
   grid-template-columns: 200px auto;
   height: 100%;
+  background-color: #0a2536;
 `;

@@ -1,8 +1,7 @@
-import { useState } from "react";
 import { Text, TaskCard } from "./styles";
 import { Container } from "../../atoms/Container";
-import { useTasks } from "../../../context/TasksContext";
 import { Button } from "../../atoms/Button";
+import { useTasks } from "../../../context/TasksContext";
 
 export const AddedTasks = () => {
   const { tasks, removeTask, setShowRemoveMessage } = useTasks();
