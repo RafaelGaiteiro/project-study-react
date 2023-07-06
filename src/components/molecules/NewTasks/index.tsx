@@ -8,8 +8,8 @@ import { InputGroup } from "../../atoms/InputGroup";
 import { Message } from "../../atoms/Message";
 
 export const NewTasks = () => {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
+  const { setId, id, setTitle, title, setDescription, description } =
+    useTasks();
   const [showNewMessage, setShowNewMessage] = useState<boolean>(false);
   const [showNullFieldsMessage, setShowNullFieldsMessage] =
     useState<boolean>(false);
@@ -27,6 +27,10 @@ export const NewTasks = () => {
     }
   }
 
+  function handleTitleChange() {}
+
+  function handleDescriptionChange() {}
+
   return (
     <Container
       flexdirection="column"
@@ -39,6 +43,7 @@ export const NewTasks = () => {
         <Input
           type="text"
           placeholder="Digite o título da tarefa"
+          value={title}
           onChange={(event) => setTitle(event.target.value)}
         />
       </InputGroup>
@@ -47,6 +52,7 @@ export const NewTasks = () => {
         <Input
           type="text"
           placeholder="Digite a descrição da tarefa"
+          value={description}
           onChange={(event) => setDescription(event.target.value)}
         />
       </InputGroup>

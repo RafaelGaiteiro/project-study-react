@@ -1,12 +1,20 @@
 import { styled } from "styled-components";
 
+export const BoxRight = styled.div`
+  width: 50%;
+`;
+
+export const BoxLeft = styled.div`
+  width: 50%;
+`;
+
 export const TaskBox = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
   gap: 10px;
   flex-wrap: wrap;
-  width: 50%;
+  width: 100%;
   height: max-content;
 
   box-sizing: border-box;
