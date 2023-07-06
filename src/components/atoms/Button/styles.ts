@@ -14,6 +14,10 @@ export const ButtonComponent = styled.button`
 
   transition: 0.5s all;
 
+  &&:hover {
+    transform: scale(1.03);
+  }
+
   &&:active {
     transform: scale(1.1);
   }

@@ -11,13 +11,20 @@ export const NewTasks = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [showNewMessage, setShowNewMessage] = useState<boolean>(false);
+  const [showNullFieldsMessage, setShowNullFieldsMessage] =
+    useState<boolean>(false);
+
   const { addTask, showRemoveMessage } = useTasks();
 
   function handleSendMessage() {
-    addTask(title, description);
-    setShowNewMessage(true);
-
-    setTimeout(() => setShowNewMessage(false), 3000);
+    if (description === "" || title === "") {
+      setShowNullFieldsMessage(true);
+      setTimeout(() => setShowNullFieldsMessage(false), 3000);
+    } else {
+      addTask(title, description);
+      setShowNewMessage(true);
+      setTimeout(() => setShowNewMessage(false), 3000);
+    }
   }
 
   return (
@@ -48,12 +55,17 @@ export const NewTasks = () => {
         <Button onClick={handleSendMessage}>Adicionar</Button>
         {showNewMessage ? (
           <Message backgroundcolor="#2bc990">
-            Nova tarefa criado com sucesso!
+            Nova tarefa criada com sucesso!
           </Message>
         ) : null}
         {showRemoveMessage ? (
           <Message backgroundcolor="#a3080c">
-            Nova tarefa criado com sucesso!
+            Tarefa removida com sucesso!
+          </Message>
+        ) : null}
+        {showNullFieldsMessage ? (
+          <Message backgroundcolor="#cdba39">
+            Você não pode adicionar uma tarefa sem título ou descrição!
           </Message>
         ) : null}
       </Container>

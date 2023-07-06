@@ -13,6 +13,20 @@ export const TaskCard = styled.div`
   transition: 0.2s;
   transform: translate(0px);
 
+  @keyframes animationTaskCard {
+    0% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(15px);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  animation: 1s ease-out 0s 1 animationTaskCard;
+
   &&:hover {
     transform: translate(3px);
   }

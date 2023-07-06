@@ -13,4 +13,18 @@ export const ContainerMessage = styled.div<MessageProps>`
   font-size: 13px;
   font-weight: 600;
   border-radius: 5px;
+
+  @keyframes animationMessage {
+    0% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(15px);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  animation: 1s ease-out 0s 1 animationMessage;
 `;

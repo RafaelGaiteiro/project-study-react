@@ -7,6 +7,5 @@ export const Container = styled.div`
     "AS CT";
   grid-template-rows: 80px auto;
   grid-template-columns: 200px auto;
-  background-color: #1b1e1f;
   height: 100%;
 `;
