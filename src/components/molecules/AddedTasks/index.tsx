@@ -1,34 +1,60 @@
-import { Text, TaskCard } from "./styles";
+import { Text, TaskCard, TaskBox } from "./styles";
 import { Container } from "../../atoms/Container";
 import { Button } from "../../atoms/Button";
 import { ITask, useTasks } from "../../../context/TasksContext";
 
 export const AddedTasks = () => {
-  const { tasks, removeTask, setShowRemoveMessage } = useTasks();
+  const {
+    newTasks,
+    removeNewTask,
+    completedTasks,
+    setShowCompletedMessage,
+    addCompletedTask,
+    removeCompletedTask,
+    setShowRemoveMessage,
+  } = useTasks();
 
-  function handleSendMessage(id: string) {
-    removeTask(id);
+  function handleAddTask(id: string, title: string, description: string) {
+    addCompletedTask(id, title, description);
+    setShowCompletedMessage(true);
+    setTimeout(() => setShowCompletedMessage(false), 3000);
+    removeNewTask(id);
+  }
 
+  function handleCompletedTask(id: string) {
+    removeCompletedTask(id);
     setShowRemoveMessage(true);
     setTimeout(() => setShowRemoveMessage(false), 3000);
   }
 
   return (
-    <Container
-      display="flex"
-      justifycontent="flex-start"
-      alignitems="center"
-      gap="10px"
-      flexwrap="wrap"
-      width="50%"
-    >
-      {tasks.map((task: ITask) => (
-        <TaskCard key={task.id}>
-          <Text>{task.title}</Text>
-          <Text>{task.description}</Text>
-          <Button onClick={() => handleSendMessage(task.id)}>Remover</Button>
-        </TaskCard>
-      ))}
+    <Container display="flex" gap="10px">
+      <TaskBox>
+        {newTasks.map((task: ITask) => (
+          <TaskCard key={task.id}>
+            <Text>{task.title}</Text>
+            <Text>{task.description}</Text>
+            <Button
+              onClick={() =>
+                handleAddTask(task.id, task.title, task.description)
+              }
+            >
+              Concluir
+            </Button>
+          </TaskCard>
+        ))}
+      </TaskBox>
+      <TaskBox>
+        {completedTasks.map((task: ITask) => (
+          <TaskCard key={task.id}>
+            <Text>{task.title}</Text>
+            <Text>{task.description}</Text>
+            <Button onClick={() => handleCompletedTask(task.id)}>
+              Remover
+            </Button>
+          </TaskCard>
+        ))}
+      </TaskBox>
     </Container>
   );
 };

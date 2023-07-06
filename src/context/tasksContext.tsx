@@ -11,11 +11,16 @@ export interface ITask {
 
 // Definindo a interface para o contexto que será usado para gerenciar as tarefas
 interface ITasksContext {
-  tasks: ITask[];
-  addTask: (title: string, description: string) => void;
-  removeTask: (id: string) => void;
+  newTasks: ITask[];
+  completedTasks: ITask[];
+  addNewTask: (title: string, description: string) => void;
+  removeNewTask: (id: string) => void;
+  addCompletedTask: (id: string, title: string, description: string) => void;
+  removeCompletedTask: (id: string) => void;
   showRemoveMessage: boolean;
   setShowRemoveMessage: React.Dispatch<React.SetStateAction<boolean>>;
+  showCompletedMessage: boolean;
+  setShowCompletedMessage: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 // Criando o contexto com a interface ITasksContext
@@ -29,11 +34,14 @@ type TasksProviderProps = {
 // Definindo o componente TasksProvider
 const TasksProvider = ({ children }: TasksProviderProps) => {
   // Utilizando o hook useState para gerenciar as tarefas
-  const [tasks, setTasks] = useState<ITask[]>([]);
+  const [newTasks, setNewTasks] = useState<ITask[]>([]);
+  const [completedTasks, setCompletedTasks] = useState<ITask[]>([]);
   const [showRemoveMessage, setShowRemoveMessage] = useState<boolean>(false);
+  const [showCompletedMessage, setShowCompletedMessage] =
+    useState<boolean>(false);
 
   // Definindo a função para adicionar uma tarefa
-  const addTask = (title: string, description: string) => {
+  const addNewTask = (title: string, description: string) => {
     const newTask = {
       id: uuidv4(), // Gerando um id único para a tarefa
       title,
@@ -41,27 +49,46 @@ const TasksProvider = ({ children }: TasksProviderProps) => {
     };
 
     // Atualizando o estado de tarefas para incluir a nova tarefa
-    setTasks((prevTasks) => [
+    setNewTasks((prevTasks) => [
       ...prevTasks, // Mantendo as tarefas anteriores
       newTask, // Adicionando a nova tarefa no final da lista
     ]);
   };
 
   // Definindo a função para remover uma tarefa
-  const removeTask = (id: string) => {
+  const removeNewTask = (id: string) => {
     // Atualizando o estado de tarefas para remover a tarefa com o id fornecido
-    setTasks((prevTasks) => prevTasks.filter((task) => task.id != id));
+    setNewTasks((prevTasks) => prevTasks.filter((task) => task.id != id));
+  };
+
+  const addCompletedTask = (id: string, title: string, description: string) => {
+    const newTaskCompleted = {
+      id: id,
+      title: title,
+      description: description,
+    };
+
+    setCompletedTasks((prevTasks) => [...prevTasks, newTaskCompleted]);
+  };
+
+  const removeCompletedTask = (id: string) => {
+    setCompletedTasks((prevTasks) => prevTasks.filter((task) => task.id != id));
   };
 
   // Retornando o Provedor de contexto que contém as tarefas e as funções para adicionar e remover tarefas
   return (
     <TasksContext.Provider
       value={{
-        tasks,
-        showRemoveMessage,
+        addNewTask,
+        removeNewTask,
+        newTasks,
         setShowRemoveMessage,
-        addTask,
-        removeTask,
+        showRemoveMessage,
+        setShowCompletedMessage,
+        showCompletedMessage,
+        addCompletedTask,
+        removeCompletedTask,
+        completedTasks,
       }}
     >
       {children}

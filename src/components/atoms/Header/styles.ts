@@ -7,7 +7,7 @@ export const Container = styled.div`
   align-items: center;
   gap: 10px;
 
-  background-color: #0a2536;
+  background-color: #f8f8f8;
 `;
 
 export const Logo = styled.img`
@@ -16,6 +16,7 @@ export const Logo = styled.img`
 
 export const LinkGroup = styled.ul`
   display: flex;
+  width: 100%;
 `;
 
 export const Link = styled.li`
@@ -23,12 +24,16 @@ export const Link = styled.li`
   font-weight: 500;
   text-transform: uppercase;
   color: white;
+  width: 100%;
 
   list-style: none;
   cursor: pointer;
   margin: 10px;
   padding: 5px;
   transition: 0.3s;
+
+  border-radius: 5px;
+  background-color: #1b1e1f;
 
   -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */

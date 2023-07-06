@@ -1,5 +1,21 @@
 import { styled } from "styled-components";
 
+export const TaskBox = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  width: 50%;
+
+  box-sizing: border-box;
+  background-color: #155163;
+
+  border-radius: 5px;
+
+  padding: 10px;
+`;
+
 export const TaskCard = styled.div`
   display: flex;
   justify-content: center;
@@ -18,7 +34,7 @@ export const TaskCard = styled.div`
       transform: translateX(0);
     }
     50% {
-      transform: translateX(15px);
+      transform: translateX(10px);
     }
     100% {
       transform: translateX(0);

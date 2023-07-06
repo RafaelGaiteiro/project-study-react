@@ -12,13 +12,17 @@ export const ButtonComponent = styled.button`
   -ms-user-select: none; /* IE 10 and IE 11 */
   user-select: none; /* Standard syntax */
 
-  transition: 0.5s all;
+  transition: 0.3s all;
 
   &&:hover {
+    color: white;
+    background-color: #1a6e84;
     transform: scale(1.03);
   }
 
   &&:active {
-    transform: scale(1.1);
+    color: white;
+    background-color: #154c5e;
+    transform: scale(1.05);
   }
 `;

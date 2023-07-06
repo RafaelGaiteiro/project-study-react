@@ -9,8 +9,8 @@ import { Contact } from "./pages/Contact";
 
 export const App = () => {
   return (
-    <BrowserRouter>
-      <TasksProvider>
+    <TasksProvider>
+      <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/services" element={<Services />} />
@@ -19,7 +19,7 @@ export const App = () => {
           <Route path="/tasks" element={<Tasks />} />
         </Routes>
         <GlobalStyles />
-      </TasksProvider>
-    </BrowserRouter>
+      </BrowserRouter>
+    </TasksProvider>
   );
 };
