@@ -1,7 +1,7 @@
 import { Text, TaskCard } from "./styles";
 import { Container } from "../../atoms/Container";
 import { Button } from "../../atoms/Button";
-import { useTasks } from "../../../context/TasksContext";
+import { ITask, useTasks } from "../../../context/TasksContext";
 
 export const AddedTasks = () => {
   const { tasks, removeTask, setShowRemoveMessage } = useTasks();
@@ -22,7 +22,7 @@ export const AddedTasks = () => {
       flexwrap="wrap"
       width="50%"
     >
-      {tasks.map((task) => (
+      {tasks.map((task: ITask) => (
         <TaskCard key={task.id}>
           <Text>{task.title}</Text>
           <Text>{task.description}</Text>

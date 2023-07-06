@@ -3,7 +3,7 @@ import { ReactNode, createContext, useContext, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 // Definindo a interface para a estrutura da tarefa
-interface ITask {
+export interface ITask {
   id: string;
   title: string;
   description: string;
