@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 
 interface IStyledInputProps {
-  bordercolor: boolean;
+  bordercolor: string;
 }
 
 export const InputComponent = styled.input<IStyledInputProps>`
@@ -14,5 +14,5 @@ export const InputComponent = styled.input<IStyledInputProps>`
   background-color: #3b3b3b;
   color: #b0a99f;
   border: ${(props) =>
-    props.bordercolor ? "solid 2px #22A0A0" : "solid 2px transparent"};
+    props.bordercolor === 'true' ? "solid 2px #22A0A0" : "solid 2px transparent"};
 `;

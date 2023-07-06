@@ -3,15 +3,6 @@ import { ContainerComponent } from "./styles";
 
 export interface IContainerProps {
   children: ReactNode;
-  display?:
-    | "block"
-    | "inline"
-    | "inline-block"
-    | "flex"
-    | "inline-flex"
-    | "grid"
-    | "inline-grid"
-    | "none";
   justifycontent?: string;
   flexdirection?: "row" | "row-reverse" | "column" | "column-reverse";
   alignitems?: "stretch" | "center" | "start" | "end";

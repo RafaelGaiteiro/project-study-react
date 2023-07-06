@@ -3,10 +3,11 @@ import { styled } from "styled-components";
 export const TaskBox = styled.div`
   display: flex;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   gap: 10px;
   flex-wrap: wrap;
   width: 50%;
+  height: max-content;
 
   box-sizing: border-box;
   background-color: #155163;

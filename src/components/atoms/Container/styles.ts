@@ -2,7 +2,7 @@ import { styled } from "styled-components";
 import { IContainerProps } from ".";
 
 export const ContainerComponent = styled.div<IContainerProps>`
-  display: ${(props) => props.display};
+  display: flex;
   justify-content: ${(props) => props.justifycontent};
   align-items: ${(props) => props.alignitems};
   flex-direction: ${(props) => props.flexdirection};

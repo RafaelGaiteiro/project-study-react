@@ -29,7 +29,6 @@ export const NewTasks = () => {
 
   return (
     <Container
-      display="flex"
       flexdirection="column"
       gap="10px"
       margin="0 0 10px 0"
@@ -51,7 +50,7 @@ export const NewTasks = () => {
           onChange={(event) => setDescription(event.target.value)}
         />
       </InputGroup>
-      <Container display="flex" width="100%" gap="10px">
+      <Container flexdirection="row" width="100%" gap="10px">
         <Button onClick={handleSendMessage}>Adicionar</Button>
         {showNewMessage ? (
           <Message backgroundcolor="#2bc990">
