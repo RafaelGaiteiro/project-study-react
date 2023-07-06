@@ -34,6 +34,7 @@ export const AddedTasks = () => {
   }
 
   function handleEditNewTask(id: string, title: string, description: string) {
+    removeNewTask(id);
     editNewTask(id, title, description);
   }
 
