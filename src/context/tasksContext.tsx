@@ -138,5 +138,4 @@ const useTasks = () => {
   return context;
 };
 
-// Exportando o TasksProvider e o hook useTasks para serem usados em outros componentes
 export { TasksProvider, useTasks };
