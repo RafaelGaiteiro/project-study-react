@@ -14,6 +14,8 @@ export interface IContainerProps {
   padding?: string;
   margin?: string;
   flexwrap?: "nowrap" | "wrap" | "wrap-reverse";
+  backgroundcolor?: string;
+  radius?: string;
 }
 
 export const Container = ({ children, ...props }: IContainerProps) => {

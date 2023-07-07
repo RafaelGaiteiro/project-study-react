@@ -29,10 +29,10 @@ export const Link = styled.li`
   list-style: none;
   cursor: pointer;
   margin: 10px;
-  padding: 5px;
+  padding: 4px;
   transition: 0.3s;
 
-  border-radius: 5px;
+  border-radius: 4px;
   background-color: #1b1e1f;
 
   -webkit-user-select: none; /* Safari */
@@ -42,8 +42,8 @@ export const Link = styled.li`
   &&:hover {
     background-color: #1a6e84;
     color: white;
-    padding: 5px;
-    border-radius: 5px;
+    padding: 4px;
+    border-radius: 4px;
     transition-duration: 0.3s;
   }
 

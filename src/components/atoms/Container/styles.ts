@@ -14,4 +14,6 @@ export const ContainerComponent = styled.div<IContainerProps>`
   padding: ${(props) => props.padding};
   margin: ${(props) => props.margin};
   flex-wrap: ${(props) => props.flexwrap};
+  background-color: ${(props) => props.backgroundcolor};
+  border-radius: ${(props) => props.radius};
 `;

@@ -2,6 +2,7 @@ import { Text, TaskCard, TaskBox, BoxLeft, BoxRight, Title } from "./styles";
 import { Container } from "../../atoms/Container";
 import { Button } from "../../atoms/Button";
 import { ITask, useTasks } from "../../../context/TasksContext";
+import { NewTasks } from "../NewTasks";
 
 export const AddedTasks = () => {
   const {
@@ -46,37 +47,44 @@ export const AddedTasks = () => {
   return (
     <Container gap="10px">
       <BoxLeft>
-        {newTasks.length > 0 && (
-          <TaskBox>
-            <Title>Tarefas a fazer</Title>
-            {newTasks.map((task: ITask) => (
-              <TaskCard key={task.id}>
-                <Text>
-                  <span>Título:</span> {task.title}
-                </Text>
-                <Text>
-                  <span>Descrição:</span> {task.description}
-                </Text>
-                <Button
-                  onClick={() =>
-                    handleEditNewTask(task.id, task.title, task.description)
-                  }
-                  disabled={disabled}
-                >
-                  Editar
-                </Button>
-                <Button
-                  onClick={() =>
-                    handleAddTask(task.id, task.title, task.description)
-                  }
-                  disabled={disabled}
-                >
-                  Concluir
-                </Button>
-              </TaskCard>
-            ))}
-          </TaskBox>
-        )}
+        <TaskBox>
+          <Title>Tarefas a fazer</Title>
+          <Container
+            width="100%"
+            padding="8px"
+            radius="8px"
+            backgroundcolor="#1b1e1f"
+          >
+            <NewTasks />
+          </Container>
+
+          {newTasks.map((task: ITask) => (
+            <TaskCard key={task.id}>
+              <Text>
+                <span>Título:</span> {task.title}
+              </Text>
+              <Text>
+                <span>Descrição:</span> {task.description}
+              </Text>
+              <Button
+                onClick={() =>
+                  handleEditNewTask(task.id, task.title, task.description)
+                }
+                disabled={disabled}
+              >
+                Editar
+              </Button>
+              <Button
+                onClick={() =>
+                  handleAddTask(task.id, task.title, task.description)
+                }
+                disabled={disabled}
+              >
+                Concluir
+              </Button>
+            </TaskCard>
+          ))}
+        </TaskBox>
       </BoxLeft>
 
       <BoxRight>

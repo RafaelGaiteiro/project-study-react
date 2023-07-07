@@ -44,6 +44,8 @@ export const NewTasks = () => {
     addNewTask(title, description);
     // Usa o estado da mensagem para desabilitar o modo de salvamento
     setShowEditingMessage(false);
+    setShowNewMessage(true);
+    setTimeout(() => setShowNewMessage(false), 3000);
     setDisabled(false);
     // Limpa os campos dos inputs
     setTitle("");
@@ -62,12 +64,7 @@ export const NewTasks = () => {
   }
 
   return (
-    <Container
-      flexdirection="column"
-      gap="10px"
-      margin="0 0 10px 0"
-      width="50%"
-    >
+    <Container flexdirection="column" gap="10px" width="100%">
       <InputGroup>
         <Label>Título</Label>
         <Input
@@ -96,36 +93,34 @@ export const NewTasks = () => {
           </>
         )}
 
-        {showNewMessage ? (
-          <Message backgroundcolor="#2bc990">
-            Nova tarefa criada com sucesso!
-          </Message>
-        ) : null}
-        {showRemoveMessage ? (
+        {showNewMessage && (
+          <Message backgroundcolor="#2bc990">Tarefa salva com sucesso!</Message>
+        )}
+        {showRemoveMessage && (
           <Message backgroundcolor="#a3080c">
             Tarefa removida com sucesso!
           </Message>
-        ) : null}
-        {showNullFieldsMessage ? (
+        )}
+        {showNullFieldsMessage && (
           <Message backgroundcolor="#cdba39">
             Você não pode adicionar uma tarefa sem título!
           </Message>
-        ) : null}
-        {showCompletedMessage ? (
+        )}
+        {showCompletedMessage && (
           <Message backgroundcolor="#2991c9">
             Tarefa concluída com sucesso!
           </Message>
-        ) : null}
-        {showEditingMessage ? (
+        )}
+        {showEditingMessage && (
           <Message backgroundcolor="#d18e54">
             Você está editando a tarefa!
           </Message>
-        ) : null}
-        {showReturnMessage ? (
+        )}
+        {showReturnMessage && (
           <Message backgroundcolor="#469085">
             Você trouxe uma tarefa de volta!
           </Message>
-        ) : null}
+        )}
       </Container>
     </Container>
   );

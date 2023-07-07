@@ -12,14 +12,18 @@ export const ContainerMessage = styled.div<MessageProps>`
   color: white;
   font-size: 13px;
   font-weight: 600;
-  border-radius: 5px;
+  border-radius: 4px;
+
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 
   @keyframes animationMessage {
     0% {
       transform: translateX(0);
     }
     50% {
-      transform: translateX(15px);
+      transform: translateX(16px);
     }
     100% {
       transform: translateX(0);
