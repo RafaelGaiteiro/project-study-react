@@ -1,9 +1,15 @@
 import { styled } from "styled-components";
 
 export const ButtonComponent = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 10px;
+  height: 40px;
+
   font-size: 13px;
   font-weight: 600;
-  padding: 10px;
   border-radius: 10px;
   background-color: #6b6b6b;
   color: #b0a99f;

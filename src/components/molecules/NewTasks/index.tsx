@@ -1,4 +1,3 @@
-import { Label } from "./styles";
 import { Container } from "../../atoms/Container";
 import { Input } from "../../atoms/Input";
 import { Button } from "../../atoms/Button";
@@ -6,6 +5,7 @@ import { useState } from "react";
 import { useTasks } from "../../../context/TasksContext";
 import { InputGroup } from "../../atoms/InputGroup";
 import { Message } from "../../atoms/Message";
+import { Label } from "../../atoms/Label";
 
 export const NewTasks = () => {
   const {

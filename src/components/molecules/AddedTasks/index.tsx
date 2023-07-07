@@ -1,4 +1,4 @@
-import { Text, TaskCard, TaskBox, BoxLeft, BoxRight } from "./styles";
+import { Text, TaskCard, TaskBox, BoxLeft, BoxRight, Title } from "./styles";
 import { Container } from "../../atoms/Container";
 import { Button } from "../../atoms/Button";
 import { ITask, useTasks } from "../../../context/TasksContext";
@@ -48,10 +48,15 @@ export const AddedTasks = () => {
       <BoxLeft>
         {newTasks.length > 0 && (
           <TaskBox>
+            <Title>Tarefas a fazer</Title>
             {newTasks.map((task: ITask) => (
               <TaskCard key={task.id}>
-                <Text>{task.title}</Text>
-                <Text>{task.description}</Text>
+                <Text>
+                  <span>Título:</span> {task.title}
+                </Text>
+                <Text>
+                  <span>Descrição:</span> {task.description}
+                </Text>
                 <Button
                   onClick={() =>
                     handleEditNewTask(task.id, task.title, task.description)
@@ -77,10 +82,15 @@ export const AddedTasks = () => {
       <BoxRight>
         {completedTasks.length > 0 && (
           <TaskBox>
+            <Title>Tarefas concluídas</Title>
             {completedTasks.map((task: ITask) => (
               <TaskCard key={task.id}>
-                <Text>{task.title}</Text>
-                <Text>{task.description}</Text>
+                <Text>
+                  <span>Título:</span> {task.title}
+                </Text>
+                <Text>
+                  <span>Descrição:</span> {task.description}
+                </Text>
                 <Button
                   onClick={() =>
                     handleReturnTask(task.id, task.title, task.description)

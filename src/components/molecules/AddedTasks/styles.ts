@@ -8,6 +8,13 @@ export const BoxLeft = styled.div`
   width: 50%;
 `;
 
+export const Title = styled.h1`
+  font-size: 37px;
+  font-weight: 700;
+  padding: 5px 15px;
+  color: white;
+`;
+
 export const TaskBox = styled.div`
   display: flex;
   justify-content: flex-start;
@@ -22,18 +29,15 @@ export const TaskBox = styled.div`
 
   border-radius: 5px;
 
-  padding: 10px;
+  padding: 5px;
 `;
 
 export const TaskCard = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
-  column-gap: 10px;
-  flex-direction: row;
-  background-color: #1c828a;
+  column-gap: 8px;
   padding: 10px;
-  border-radius: 5px;
+  background-color: #1c828a;
+  border-radius: 4px;
   width: 100%;
   transition: 0.2s;
   transform: translate(0px);
@@ -57,12 +61,28 @@ export const TaskCard = styled.div`
   }
 `;
 
-export const Text = styled.p`
+export const Text = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+
+  height: 100%;
   width: 100%;
+
   background-color: #22a0a0;
   color: white;
   font-size: 13px;
   font-weight: 500;
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 5px;
+
+  word-break: break-word;
+  min-height: 50px;
+
+  span {
+    color: white;
+    font-size: 13px;
+    font-weight: 600;
+    padding-right: 10px;
+  }
 `;
