@@ -102,7 +102,7 @@ export const NewTasks = () => {
           </Message>
         )}
         {showNullFieldsMessage && (
-          <Message backgroundcolor="#cdba39">
+          <Message backgroundcolor="#ceb54d">
             Você não pode adicionar uma tarefa sem título!
           </Message>
         )}

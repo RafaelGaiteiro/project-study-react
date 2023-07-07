@@ -38,7 +38,8 @@ export const TaskBox = styled.div`
 
 export const TaskCard = styled.div`
   display: flex;
-  column-gap: 8px;
+  flex-direction: column;
+  gap: 8px;
   padding: 10px;
   background-color: #1c828a;
   border-radius: 4px;

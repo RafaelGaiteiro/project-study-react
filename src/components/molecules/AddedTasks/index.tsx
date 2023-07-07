@@ -66,22 +66,24 @@ export const AddedTasks = () => {
               <Text>
                 <span>Descrição:</span> {task.description}
               </Text>
-              <Button
-                onClick={() =>
-                  handleEditNewTask(task.id, task.title, task.description)
-                }
-                disabled={disabled}
-              >
-                Editar
-              </Button>
-              <Button
-                onClick={() =>
-                  handleAddTask(task.id, task.title, task.description)
-                }
-                disabled={disabled}
-              >
-                Concluir
-              </Button>
+              <Container flexdirection="row" gap="4px">
+                <Button
+                  onClick={() =>
+                    handleEditNewTask(task.id, task.title, task.description)
+                  }
+                  disabled={disabled}
+                >
+                  Editar
+                </Button>
+                <Button
+                  onClick={() =>
+                    handleAddTask(task.id, task.title, task.description)
+                  }
+                  disabled={disabled}
+                >
+                  Concluir
+                </Button>
+              </Container>
             </TaskCard>
           ))}
         </TaskBox>
@@ -99,20 +101,22 @@ export const AddedTasks = () => {
                 <Text>
                   <span>Descrição:</span> {task.description}
                 </Text>
-                <Button
-                  onClick={() =>
-                    handleReturnTask(task.id, task.title, task.description)
-                  }
-                  disabled={disabled}
-                >
-                  Retornar
-                </Button>
-                <Button
-                  onClick={() => handleCompletedTask(task.id)}
-                  disabled={disabled}
-                >
-                  Remover
-                </Button>
+                <Container flexdirection="row" gap="4px">
+                  <Button
+                    onClick={() =>
+                      handleReturnTask(task.id, task.title, task.description)
+                    }
+                    disabled={disabled}
+                  >
+                    Retornar
+                  </Button>
+                  <Button
+                    onClick={() => handleCompletedTask(task.id)}
+                    disabled={disabled}
+                  >
+                    Remover
+                  </Button>
+                </Container>
               </TaskCard>
             ))}
           </TaskBox>
