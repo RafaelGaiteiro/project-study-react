@@ -8,16 +8,26 @@ import { InputGroup } from "../../atoms/InputGroup";
 import { Message } from "../../atoms/Message";
 
 export const NewTasks = () => {
-  const { setId, id, setTitle, title, setDescription, description } =
-    useTasks();
+  const {
+    setTitle,
+    title,
+    setDescription,
+    description,
+    showEditingMessage,
+    setDisabled,
+    setShowRemoveMessage,
+    addNewTask,
+    showRemoveMessage,
+    showCompletedMessage,
+    setShowEditingMessage,
+    showReturnMessage,
+  } = useTasks();
   const [showNewMessage, setShowNewMessage] = useState<boolean>(false);
   const [showNullFieldsMessage, setShowNullFieldsMessage] =
     useState<boolean>(false);
 
-  const { addNewTask, showRemoveMessage, showCompletedMessage } = useTasks();
-
-  function handleSendMessage() {
-    if (description === "" || title === "") {
+  function handleAdd() {
+    if (title === "") {
       setShowNullFieldsMessage(true);
       setTimeout(() => setShowNullFieldsMessage(false), 3000);
     } else {
@@ -25,11 +35,31 @@ export const NewTasks = () => {
       setShowNewMessage(true);
       setTimeout(() => setShowNewMessage(false), 3000);
     }
+    // Limpa os campos dos inputs
+    setTitle("");
+    setDescription("");
   }
 
-  function handleTitleChange() {}
+  function handleSave() {
+    addNewTask(title, description);
+    // Usa o estado da mensagem para desabilitar o modo de salvamento
+    setShowEditingMessage(false);
+    setDisabled(false);
+    // Limpa os campos dos inputs
+    setTitle("");
+    setDescription("");
+  }
 
-  function handleDescriptionChange() {}
+  function handleDelete() {
+    setShowRemoveMessage(true);
+    setTimeout(() => setShowRemoveMessage(false), 3000);
+    // Usa o estado da mensagem para desabilitar o modo de salvamento
+    setShowEditingMessage(false);
+    setDisabled(false);
+    // Limpa os campos dos inputs
+    setTitle("");
+    setDescription("");
+  }
 
   return (
     <Container
@@ -57,7 +87,15 @@ export const NewTasks = () => {
         />
       </InputGroup>
       <Container flexdirection="row" width="100%" gap="10px">
-        <Button onClick={handleSendMessage}>Adicionar</Button>
+        {/* Usa o estado da mensagem para habilitar o modo de salvamento */}
+        {!showEditingMessage && <Button onClick={handleAdd}>Adicionar</Button>}
+        {showEditingMessage && (
+          <>
+            <Button onClick={handleSave}>Salvar</Button>
+            <Button onClick={handleDelete}>Remover</Button>
+          </>
+        )}
+
         {showNewMessage ? (
           <Message backgroundcolor="#2bc990">
             Nova tarefa criada com sucesso!
@@ -70,12 +108,22 @@ export const NewTasks = () => {
         ) : null}
         {showNullFieldsMessage ? (
           <Message backgroundcolor="#cdba39">
-            Você não pode adicionar uma tarefa sem título ou descrição!
+            Você não pode adicionar uma tarefa sem título!
           </Message>
         ) : null}
         {showCompletedMessage ? (
           <Message backgroundcolor="#2991c9">
             Tarefa concluída com sucesso!
+          </Message>
+        ) : null}
+        {showEditingMessage ? (
+          <Message backgroundcolor="#d18e54">
+            Você está editando a tarefa!
+          </Message>
+        ) : null}
+        {showReturnMessage ? (
+          <Message backgroundcolor="#469085">
+            Você trouxe uma tarefa de volta!
           </Message>
         ) : null}
       </Container>

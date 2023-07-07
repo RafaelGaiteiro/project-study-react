@@ -1,15 +1,11 @@
-import { useState } from "react";
 import { Text, TaskCard, TaskBox, BoxLeft, BoxRight } from "./styles";
 import { Container } from "../../atoms/Container";
 import { Button } from "../../atoms/Button";
 import { ITask, useTasks } from "../../../context/TasksContext";
 
 export const AddedTasks = () => {
-  // const [id, setId] = useState("");
-  // const [title, setTitle] = useState("");
-  // const [description, setDescription] = useState("");
-
   const {
+    addNewTask,
     newTasks,
     removeNewTask,
     completedTasks,
@@ -18,6 +14,8 @@ export const AddedTasks = () => {
     removeCompletedTask,
     setShowRemoveMessage,
     editNewTask,
+    disabled,
+    setShowReturnMessage,
   } = useTasks();
 
   function handleAddTask(id: string, title: string, description: string) {
@@ -38,6 +36,13 @@ export const AddedTasks = () => {
     editNewTask(id, title, description);
   }
 
+  function handleReturnTask(id: string, title: string, description: string) {
+    addNewTask(title, description);
+    removeCompletedTask(id); // Remove das tasks concluídas
+    setShowReturnMessage(true);
+    setTimeout(() => setShowReturnMessage(false), 3000);
+  }
+
   return (
     <Container gap="10px">
       <BoxLeft>
@@ -51,14 +56,15 @@ export const AddedTasks = () => {
                   onClick={() =>
                     handleEditNewTask(task.id, task.title, task.description)
                   }
+                  disabled={disabled}
                 >
                   Editar
                 </Button>
-
                 <Button
                   onClick={() =>
                     handleAddTask(task.id, task.title, task.description)
                   }
+                  disabled={disabled}
                 >
                   Concluir
                 </Button>
@@ -75,8 +81,18 @@ export const AddedTasks = () => {
               <TaskCard key={task.id}>
                 <Text>{task.title}</Text>
                 <Text>{task.description}</Text>
-                <Button>Retornar</Button>
-                <Button onClick={() => handleCompletedTask(task.id)}>
+                <Button
+                  onClick={() =>
+                    handleReturnTask(task.id, task.title, task.description)
+                  }
+                  disabled={disabled}
+                >
+                  Retornar
+                </Button>
+                <Button
+                  onClick={() => handleCompletedTask(task.id)}
+                  disabled={disabled}
+                >
                   Remover
                 </Button>
               </TaskCard>
