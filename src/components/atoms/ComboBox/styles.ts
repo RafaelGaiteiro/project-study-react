@@ -1,10 +1,6 @@
 import { styled } from "styled-components";
 
-export const ButtonComponent = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
+export const Select = styled.select`
   padding: 10px;
   height: 40px;
 
@@ -24,12 +20,17 @@ export const ButtonComponent = styled.button`
   &&:hover {
     color: white;
     background-color: #1a6e84;
-    transform: scale(1.03);
   }
 
   &&:active {
     color: white;
     background-color: #154c5e;
-    transform: scale(1.05);
+  }
+
+  option {
+    font-size: 13px;
+    font-weight: 500;
+    background-color: #6b6b6b;
+    color: #b0a99f;
   }
 `;
