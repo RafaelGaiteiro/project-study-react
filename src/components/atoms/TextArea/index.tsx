@@ -5,7 +5,7 @@ export interface IInputProps {
   type: string;
   placeholder: string;
   value?: string;
-  onChange: React.ChangeEventHandler<HTMLInputElement> | undefined;
+  onChange: React.ChangeEventHandler<HTMLTextAreaElement> | undefined;
 }
 
 export const TextArea = ({ ...props }: IInputProps) => {
