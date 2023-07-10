@@ -1,4 +1,12 @@
-import { Text, TaskCard, TaskBox, BoxLeft, BoxRight, Title } from "./styles";
+import {
+  TaskCard,
+  TaskBox,
+  BoxLeft,
+  BoxRight,
+  Title,
+  TextTop,
+  TextBottom,
+} from "./styles";
 import { Container } from "../../atoms/Container";
 import { Button } from "../../atoms/Button";
 import { ITask, useTasks } from "../../../context/TasksContext";
@@ -60,12 +68,8 @@ export const AddedTasks = () => {
 
           {newTasks.map((task: ITask) => (
             <TaskCard key={task.id}>
-              <Text>
-                <span>Título:</span> {task.title}
-              </Text>
-              <Text>
-                <span>Descrição:</span> {task.description}
-              </Text>
+              <TextTop>{task.title}</TextTop>
+              <TextBottom>{task.description}</TextBottom>
               <Container flexdirection="row" gap="4px">
                 <Button
                   onClick={() =>
@@ -95,12 +99,8 @@ export const AddedTasks = () => {
             <Title>Tarefas concluídas</Title>
             {completedTasks.map((task: ITask) => (
               <TaskCard key={task.id}>
-                <Text>
-                  <span>Título:</span> {task.title}
-                </Text>
-                <Text>
-                  <span>Descrição:</span> {task.description}
-                </Text>
+                <TextTop>{task.title}</TextTop>
+                <TextBottom>{task.description}</TextBottom>
                 <Container flexdirection="row" gap="4px">
                   <Button
                     onClick={() =>

@@ -6,6 +6,7 @@ import { useTasks } from "../../../context/TasksContext";
 import { InputGroup } from "../../atoms/InputGroup";
 import { Message } from "../../atoms/Message";
 import { Label } from "../../atoms/Label";
+import { TextArea } from "../../atoms/TextArea";
 
 export const NewTasks = () => {
   const {
@@ -66,7 +67,6 @@ export const NewTasks = () => {
   return (
     <Container flexdirection="column" gap="10px" width="100%">
       <InputGroup>
-        <Label>Título</Label>
         <Input
           type="text"
           placeholder="Digite o título da tarefa"
@@ -75,8 +75,7 @@ export const NewTasks = () => {
         />
       </InputGroup>
       <InputGroup>
-        <Label>Descrição</Label>
-        <Input
+        <TextArea
           type="text"
           placeholder="Digite a descrição da tarefa"
           value={description}

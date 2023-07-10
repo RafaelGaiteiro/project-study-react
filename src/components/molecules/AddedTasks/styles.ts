@@ -66,32 +66,29 @@ export const TaskCard = styled.div`
   }
 `;
 
-export const Text = styled.div`
+export const TextTop = styled.div`
   display: flex;
-  flex-direction: column;
-  align-items: start;
+  justify-content: start;
+  align-items: center;
+  background-color: #22a0a0;
+  color: white;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 10px;
+  border-radius: 4px 4px 0 0;
+  word-break: break-word;
+`;
 
-  height: 100%;
-  width: 100%;
-
+export const TextBottom = styled.div`
+  display: flex;
+  justify-content: start;
+  align-items: center;
   background-color: #22a0a0;
   color: white;
   font-size: 13px;
   font-weight: 500;
   padding: 10px;
-  border-radius: 4px;
-
+  border-radius: 0 0 4px 4px;
+  margin-top: -6px;
   word-break: break-word;
-  min-height: 50px;
-
-  span {
-    color: white;
-    font-size: 13px;
-    font-weight: 600;
-    padding-right: 10px;
-
-    -webkit-user-select: none; /* Safari */
-    -ms-user-select: none; /* IE 10 and IE 11 */
-    user-select: none; /* Standard syntax */
-  }
 `;
