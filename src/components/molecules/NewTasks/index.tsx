@@ -5,7 +5,6 @@ import { useState } from "react";
 import { useTasks } from "../../../context/TasksContext";
 import { InputGroup } from "../../atoms/InputGroup";
 import { Message } from "../../atoms/Message";
-import { Label } from "../../atoms/Label";
 import { TextArea } from "../../atoms/TextArea";
 
 export const NewTasks = () => {
