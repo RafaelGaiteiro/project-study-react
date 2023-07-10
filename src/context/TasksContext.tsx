@@ -1,5 +1,18 @@
-import { ReactNode, createContext, useContext, useState } from "react";
+import axios from "axios";
+import {
+  ReactNode,
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+} from "react";
 import { v4 as uuidv4 } from "uuid";
+
+interface IPost {
+  id: number;
+  title: string;
+  body: string;
+}
 
 export interface ITask {
   id: string;
@@ -54,6 +67,29 @@ const TasksProvider = ({ children }: TasksProviderProps) => {
   const [showEditingMessage, setShowEditingMessage] = useState<boolean>(false);
   const [showReturnMessage, setShowReturnMessage] = useState<boolean>(false);
   const [disabled, setDisabled] = useState<boolean>(false);
+
+  // Pegando tarefas com API
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        // Requisição GET
+        const response = await axios.get(
+          "https://jsonplaceholder.typicode.com/posts"
+        );
+        // Renderiza a resposta da API, que são posts, aqui estamos salvando como tarefas
+        const fetchedTasks = response.data.map((post: IPost) => ({
+          id: uuidv4(), // Geramos um ID único para que não haja problemas com a manipulação das tarefas
+          title: post.title,
+          description: post.body,
+        }));
+        // Setamos uma nova tarefa
+        setNewTasks(fetchedTasks);
+      } catch (error) {
+        console.error("Erro ao buscar os posts", error);
+      }
+    };
+    fetchPosts(); // Chamamos a função que chama os posts
+  }, []);
 
   const addNewTask = (title: string, description: string) => {
     const newTask = {
