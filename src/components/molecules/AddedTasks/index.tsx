@@ -1,6 +1,5 @@
 import {
   TaskCard,
-  TaskBox,
   BoxLeft,
   BoxRight,
   Title,
@@ -12,6 +11,7 @@ import { Button } from "../../atoms/Button";
 import { ITask, useTasks } from "../../../context/TasksContext";
 import { NewTasks } from "../NewTasks";
 import { Text } from "../../atoms/Text";
+import { Box } from "../../atoms/Box";
 
 export const AddedTasks = () => {
   const {
@@ -60,7 +60,7 @@ export const AddedTasks = () => {
   return (
     <Container gap="10px">
       <BoxLeft>
-        <TaskBox>
+        <Box>
           <Container
             alignitems="center"
             width="100%"
@@ -68,7 +68,7 @@ export const AddedTasks = () => {
             padding=" 2px 16px"
           >
             <Title>Tarefas a fazer</Title>
-            <Text>{newTaskCount}</Text>
+            <Text size="7">{newTaskCount}</Text>
           </Container>
           <Container
             width="100%"
@@ -103,12 +103,12 @@ export const AddedTasks = () => {
               </Container>
             </TaskCard>
           ))}
-        </TaskBox>
+        </Box>
       </BoxLeft>
 
       <BoxRight>
         {completedTasks.length > 0 && (
-          <TaskBox>
+          <Box>
             <Container
               alignitems="center"
               width="100%"
@@ -116,7 +116,7 @@ export const AddedTasks = () => {
               padding=" 2px 16px"
             >
               <Title>Tarefas concluídas</Title>
-              <Text>{completedTaskCount}</Text>
+              <Text size="7">{completedTaskCount}</Text>
             </Container>
             {completedTasks.map((task: ITask) => (
               <TaskCard key={task.id}>
@@ -140,7 +140,7 @@ export const AddedTasks = () => {
                 </Container>
               </TaskCard>
             ))}
-          </TaskBox>
+          </Box>
         )}
       </BoxRight>
     </Container>

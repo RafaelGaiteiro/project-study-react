@@ -1,10 +1,12 @@
 import { ReactNode } from "react";
 import { Container } from "./styles";
 
-type TextContainerProps = {
+export type TextContainerProps = {
   children: ReactNode;
+  margintop?: string;
+  marginbottom?: string;
 };
 
-export const TextContainer = ({ children }: TextContainerProps) => {
-  return <Container>{children}</Container>;
+export const TextContainer = ({ children, ...props }: TextContainerProps) => {
+  return <Container {...props}>{children}</Container>;
 };

@@ -11,7 +11,7 @@ export const Header = () => {
         <Link onClick={() => navigate("/about")}>Sobre</Link>
         <Link onClick={() => navigate("/contact")}>Contato</Link>
         <Link onClick={() => navigate("/tasks")}>Tarefas</Link>
-        <Link onClick={() => navigate("/data")}>Dados | Get</Link>
+        <Link onClick={() => navigate("/data")}>Get | Post | Delete | Put</Link>
       </LinkGroup>
     </Container>
   );

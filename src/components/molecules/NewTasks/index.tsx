@@ -44,15 +44,20 @@ export const NewTasks = () => {
   }
 
   function handleSave() {
-    addNewTask(title, description);
-    // Usa o estado da mensagem para desabilitar o modo de salvamento
-    setShowEditingMessage(false);
-    setShowNewMessage(true);
-    setTimeout(() => setShowNewMessage(false), 3000);
-    setDisabled(false);
-    // Limpa os campos dos inputs
-    setTitle("");
-    setDescription("");
+    if (title === "") {
+      setShowNullFieldsMessage(true);
+      setTimeout(() => setShowNullFieldsMessage(false), 3000);
+    } else {
+      addNewTask(title, description);
+      // Usa o estado da mensagem para desabilitar o modo de salvamento
+      setShowEditingMessage(false);
+      setShowNewMessage(true);
+      setTimeout(() => setShowNewMessage(false), 3000);
+      setDisabled(false);
+      // Limpa os campos dos inputs
+      setTitle("");
+      setDescription("");
+    }
   }
 
   function handleDelete() {

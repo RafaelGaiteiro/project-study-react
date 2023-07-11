@@ -8,16 +8,25 @@ export const Home = () => {
     <DefaultTemplate>
       <TextContainer>
         <Title>Do que se trata essa aplicação?</Title>
-        <Text>
+        <Text size="4">
           Esta é uma aplicação front-end desenvolvida em ReactJS com TypeScript,
           seguindo a arquitetura Atomic Design.
         </Text>
-      </TextContainer>
-      <TextContainer>
+
         <Title> Desafios futuros:</Title>
-        <Text>
+        <Text size="4">
           A principal meta será aprimorar minhas habilidades em ReactJS seguindo
           princípios como Mobile-First e DRY (Don't Repeat Yourself).
+        </Text>
+
+        <Title>Controle de Tarefas</Title>
+        <Text size="4">
+          Use os controles Adicionar, Editar, Concluir em Tarefas a fazer.
+          <br />
+          Você também tem a opção Gerar Tarefas para gerar tarefas com dados da
+          API JSONPlaceholder.
+          <br />
+          Em Tarefas concluídas você pode usar os controles Retornar e Remover.
         </Text>
       </TextContainer>
     </DefaultTemplate>

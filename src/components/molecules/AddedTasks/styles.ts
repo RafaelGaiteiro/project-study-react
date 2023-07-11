@@ -18,23 +18,6 @@ export const Title = styled.h1`
   user-select: none; /* Standard syntax */
 `;
 
-export const TaskBox = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  gap: 10px;
-  flex-wrap: wrap;
-  width: 100%;
-  height: max-content;
-
-  box-sizing: border-box;
-  background-color: #155163;
-
-  border-radius: 8px;
-
-  padding: 4px;
-`;
-
 export const TaskCard = styled.div`
   display: flex;
   flex-direction: column;
