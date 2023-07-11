@@ -1,12 +1,14 @@
 import { styled } from "styled-components";
-import { Size } from ".";
+import { Font } from ".";
 
-export const Container = styled.div<Size>`
+export const Container = styled.div<Font>`
   display: flex;
   font-size: ${({ fontSize }) => fontSize};
   align-items: center;
   gap: 8px;
-  background-color: #22a0a0;
+
+  background-color: ${(props) =>
+    props.disablebackground === "true" ? "transparent" : " #22a0a0"};
   padding: 5px 10px;
   border-radius: 4px;
   color: white;

@@ -12,7 +12,7 @@ export const Data = () => {
     <DefaultTemplate>
       <TextContainer marginbottom="4px">
         <Title>O que estamos fazendo nessa página?</Title>
-        <Text size="3">
+        <Text size="4">
           São requisições REST API com Axios no ReactJs, estamos utilizando a
           API gratuita JSONPlaceholder. Aqui estamos fazendo requisições GET |
           POST | DELETE | PUT.

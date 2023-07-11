@@ -1,10 +1,11 @@
 import { ReactNode } from "react";
 import { TitleComponent } from "./styles";
 
-type TitleProps = {
+export type TitleProps = {
   children: ReactNode;
+  disablebackground?: "true" | "false";
 };
 
-export const Title = ({ children }: TitleProps) => {
-  return <TitleComponent>{children}</TitleComponent>;
+export const Title = ({ children, ...props }: TitleProps) => {
+  return <TitleComponent {...props}>{children}</TitleComponent>;
 };

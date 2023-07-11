@@ -8,16 +8,6 @@ export const BoxLeft = styled.div`
   width: 50%;
 `;
 
-export const Title = styled.h1`
-  font-size: 37px;
-  font-weight: 700;
-  color: white;
-
-  -webkit-user-select: none; /* Safari */
-  -ms-user-select: none; /* IE 10 and IE 11 */
-  user-select: none; /* Standard syntax */
-`;
-
 export const TaskCard = styled.div`
   display: flex;
   flex-direction: column;

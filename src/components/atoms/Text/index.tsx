@@ -1,16 +1,21 @@
 import { ReactNode, useState, useEffect } from "react";
 import { Container } from "./styles";
 
-type TextProps = {
+interface TextProps {
   children: ReactNode;
   size?: "1" | "2" | "3" | "4" | "5" | "6" | "7";
-};
+  disablebackground?: "true" | "false";
+}
 
-export type Size = {
+export interface Font extends TextProps {
   fontSize: string;
-};
+}
 
-export const Text = ({ children, size = "1" }: TextProps) => {
+export const Text = ({
+  children,
+  size = "1",
+  disablebackground,
+}: TextProps) => {
   const [fontsize, setFontsize] = useState<string>("12px");
 
   useEffect(() => {
@@ -31,5 +36,9 @@ export const Text = ({ children, size = "1" }: TextProps) => {
     }
   }, [size]);
 
-  return <Container fontSize={fontsize}>{children}</Container>;
+  return (
+    <Container fontSize={fontsize} disablebackground={disablebackground}>
+      {children}
+    </Container>
+  );
 };

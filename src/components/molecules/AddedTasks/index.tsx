@@ -1,17 +1,11 @@
-import {
-  TaskCard,
-  BoxLeft,
-  BoxRight,
-  Title,
-  TextTop,
-  TextBottom,
-} from "./styles";
+import { TaskCard, BoxLeft, BoxRight, TextTop, TextBottom } from "./styles";
 import { Container } from "../../atoms/Container";
 import { Button } from "../../atoms/Button";
 import { ITask, useTasks } from "../../../context/TasksContext";
 import { NewTasks } from "../NewTasks";
 import { Text } from "../../atoms/Text";
 import { Box } from "../../atoms/Box";
+import { Title } from "../../atoms/Title";
 
 export const AddedTasks = () => {
   const {
@@ -65,9 +59,9 @@ export const AddedTasks = () => {
             alignitems="center"
             width="100%"
             justifycontent="space-between"
-            padding=" 2px 16px"
+            padding="0 8px 0 0"
           >
-            <Title>Tarefas a fazer</Title>
+            <Title disablebackground="true">Tarefas a fazer</Title>
             <Text size="7">{newTaskCount}</Text>
           </Container>
           <Container
@@ -115,7 +109,7 @@ export const AddedTasks = () => {
               justifycontent="space-between"
               padding=" 2px 16px"
             >
-              <Title>Tarefas concluídas</Title>
+              <Title disablebackground="true">Tarefas concluídas</Title>
               <Text size="7">{completedTaskCount}</Text>
             </Container>
             {completedTasks.map((task: ITask) => (

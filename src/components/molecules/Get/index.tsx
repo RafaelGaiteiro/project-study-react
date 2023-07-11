@@ -5,7 +5,8 @@ import { TextContainer } from "../../atoms/TextContainer";
 import { Text } from "../../atoms/Text";
 import { Select } from "../../atoms/ComboBox";
 import { Title } from "../../atoms/Title";
-import { Box } from "../../atoms/Box";
+import { Container } from "../../atoms/Container";
+import { MainBox } from "../../atoms/MainBox";
 
 interface IPost {
   userId: number;
@@ -52,38 +53,42 @@ export const Get = () => {
     : posts;
 
   return (
-    <>
-      <TextContainer marginbottom="4px">
-        <Title>GET</Title>
-        <Text size="4">
+    <MainBox>
+      <Title disablebackground="true">GET</Title>
+      <Container
+        width="100%"
+        padding="8px"
+        radius="8px"
+        backgroundcolor="#1b1e1f"
+        justifycontent="space-between"
+      >
+        <Text size="4" disablebackground="true">
           Para acessar os dados vindos da api você deve selecionar um ID de
           Usuário:
-          <Select
-            value={selectedUserId}
-            onChange={(e) => setSelectedUserId(Number(e.target.value))}
-          >
-            <option>Selecione</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-            <option>6</option>
-            <option>7</option>
-            <option>8</option>
-            <option>9</option>
-            <option>10</option>
-          </Select>
         </Text>
-      </TextContainer>
-      <Box>
-        {filteredPosts.map((post: IPost) => (
-          <TextContainer key={post.id}>
-            <Text size="4">{post.title}</Text>
-            <Text size="3">{post.body}</Text>
-          </TextContainer>
-        ))}
-      </Box>
-    </>
+        <Select
+          value={selectedUserId}
+          onChange={(e) => setSelectedUserId(Number(e.target.value))}
+        >
+          <option>Selecione</option>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+          <option>6</option>
+          <option>7</option>
+          <option>8</option>
+          <option>9</option>
+          <option>10</option>
+        </Select>
+      </Container>
+      {filteredPosts.map((post: IPost) => (
+        <TextContainer key={post.id}>
+          <Text size="4">{post.title}</Text>
+          <Text size="3">{post.body}</Text>
+        </TextContainer>
+      ))}
+    </MainBox>
   );
 };
