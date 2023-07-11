@@ -59,8 +59,8 @@ export const Data = () => {
       <TextContainer>
         <Title>O que estamos fazendo nessa página?</Title>
         <Text>
-          É uma requisição <span>API REST</span> com Axios, estamos utilizando a
-          api gratuita JSONPlaceholder e estamos fazendo uma requisição POST.
+          É uma requisição API REST com Axios, estamos utilizando a api gratuita
+          JSONPlaceholder e estamos fazendo uma requisição GET.
         </Text>
         <Text>
           Para acessar os dados vindos da api você deve selecionar um ID de
@@ -77,7 +77,6 @@ export const Data = () => {
           </Select>
         </Text>
       </TextContainer>
-
       {filteredPosts.map((post: IPost) => (
         <TextContainer key={post.id}>
           <Title>{post.title}</Title>

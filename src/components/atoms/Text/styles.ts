@@ -8,9 +8,4 @@ export const Container = styled.div`
   padding: 5px 10px;
   border-radius: 4px;
   color: white;
-
-  span {
-    color: white;
-    font-weight: 600;
-  }
 `;

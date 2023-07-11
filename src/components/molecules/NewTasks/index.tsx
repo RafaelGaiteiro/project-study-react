@@ -130,7 +130,7 @@ export const NewTasks = () => {
         )}
         {showGenerateFakeMessages && (
           <Message backgroundcolor="#a87364">
-            Você gerou tarefas falsas!
+            Você gerou tarefas com dados da API JSONPlaceholder!
           </Message>
         )}
       </Container>
