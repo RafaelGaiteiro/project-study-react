@@ -11,7 +11,6 @@ export const BoxLeft = styled.div`
 export const Title = styled.h1`
   font-size: 37px;
   font-weight: 700;
-  padding: 4px 16px;
   color: white;
 
   -webkit-user-select: none; /* Safari */

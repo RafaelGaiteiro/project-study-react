@@ -11,6 +11,7 @@ import { Container } from "../../atoms/Container";
 import { Button } from "../../atoms/Button";
 import { ITask, useTasks } from "../../../context/TasksContext";
 import { NewTasks } from "../NewTasks";
+import { Text } from "../../atoms/Text";
 
 export const AddedTasks = () => {
   const {
@@ -52,11 +53,23 @@ export const AddedTasks = () => {
     setTimeout(() => setShowReturnMessage(false), 3000);
   }
 
+  const newTaskCount = newTasks.length; // Quantidade de Tarefas a fazer
+  const completedTaskCount = completedTasks.length; // Quantidade de Tarefas concluídas
+  // const taskCounter = newTaskCount + completedTaskCount; // Quantidade total de tarefas
+
   return (
     <Container gap="10px">
       <BoxLeft>
         <TaskBox>
-          <Title>Tarefas a fazer</Title>
+          <Container
+            alignitems="center"
+            width="100%"
+            justifycontent="space-between"
+            padding=" 2px 16px"
+          >
+            <Title>Tarefas a fazer</Title>
+            <Text>{newTaskCount}</Text>
+          </Container>
           <Container
             width="100%"
             padding="8px"
@@ -96,7 +109,15 @@ export const AddedTasks = () => {
       <BoxRight>
         {completedTasks.length > 0 && (
           <TaskBox>
-            <Title>Tarefas concluídas</Title>
+            <Container
+              alignitems="center"
+              width="100%"
+              justifycontent="space-between"
+              padding=" 2px 16px"
+            >
+              <Title>Tarefas concluídas</Title>
+              <Text>{completedTaskCount}</Text>
+            </Container>
             {completedTasks.map((task: ITask) => (
               <TaskCard key={task.id}>
                 <TextTop>{task.title}</TextTop>

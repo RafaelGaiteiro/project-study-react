@@ -3,7 +3,13 @@ import { ContainerComponent } from "./styles";
 
 export interface IContainerProps {
   children: ReactNode;
-  justifycontent?: string;
+  justifycontent?:
+    | "start"
+    | "end"
+    | "center"
+    | "space-between"
+    | "space-around"
+    | "space-evenly";
   flexdirection?: "row" | "row-reverse" | "column" | "column-reverse";
   alignitems?: "stretch" | "center" | "start" | "end";
   gap?: string;

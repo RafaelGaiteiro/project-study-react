@@ -13,15 +13,17 @@ export const NewTasks = () => {
     title,
     setDescription,
     description,
-    showEditingMessage,
     setDisabled,
-    setShowRemoveMessage,
     addNewTask,
+    addFakeTasks,
+    // Mensagens
     showRemoveMessage,
     showCompletedMessage,
     setShowEditingMessage,
     showReturnMessage,
-    addFakeTasks,
+    setShowRemoveMessage,
+    showEditingMessage,
+    showGenerateFakeMessages,
   } = useTasks();
   const [showNewMessage, setShowNewMessage] = useState<boolean>(false);
   const [showNullFieldsMessage, setShowNullFieldsMessage] =
@@ -84,8 +86,13 @@ export const NewTasks = () => {
       </InputGroup>
       <Container flexdirection="row" width="100%" gap="10px">
         {/* Usa o estado da mensagem para habilitar o modo de salvamento */}
-        {!showEditingMessage && <Button onClick={handleAdd}>Adicionar</Button>}
-        <Button onClick={addFakeTasks}>Gerar Tarefas</Button>
+        {!showEditingMessage && (
+          <>
+            <Button onClick={handleAdd}>Adicionar</Button>
+            <Button onClick={addFakeTasks}>Gerar Tarefas</Button>
+          </>
+        )}
+
         {showEditingMessage && (
           <>
             <Button onClick={handleSave}>Salvar</Button>
@@ -119,6 +126,11 @@ export const NewTasks = () => {
         {showReturnMessage && (
           <Message backgroundcolor="#469085">
             Você trouxe uma tarefa de volta!
+          </Message>
+        )}
+        {showGenerateFakeMessages && (
+          <Message backgroundcolor="#a87364">
+            Você gerou tarefas falsas!
           </Message>
         )}
       </Container>

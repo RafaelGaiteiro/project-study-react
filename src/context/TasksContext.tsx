@@ -31,6 +31,8 @@ interface ITasksContext {
   setShowEditingMessage: React.Dispatch<React.SetStateAction<boolean>>;
   showReturnMessage: boolean;
   setShowReturnMessage: React.Dispatch<React.SetStateAction<boolean>>;
+  showGenerateFakeMessages: boolean;
+  setShowGenerateFakeMessages: React.Dispatch<React.SetStateAction<boolean>>;
   // Data
   id: string;
   title: string;
@@ -57,12 +59,15 @@ const TasksProvider = ({ children }: TasksProviderProps) => {
   const [id, setId] = useState<string>("");
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
+  const [disabled, setDisabled] = useState<boolean>(false);
+  // Estados das mensagens
   const [showRemoveMessage, setShowRemoveMessage] = useState<boolean>(false);
   const [showCompletedMessage, setShowCompletedMessage] =
     useState<boolean>(false);
   const [showEditingMessage, setShowEditingMessage] = useState<boolean>(false);
   const [showReturnMessage, setShowReturnMessage] = useState<boolean>(false);
-  const [disabled, setDisabled] = useState<boolean>(false);
+  const [showGenerateFakeMessages, setShowGenerateFakeMessages] =
+    useState<boolean>(false);
 
   // Pegando tarefas com API
   const fetchPosts = async () => {
@@ -78,13 +83,18 @@ const TasksProvider = ({ children }: TasksProviderProps) => {
         description: post.body,
       }));
       // Setamos uma nova tarefa
-      setNewTasks(fetchedTasks);
+      // setNewTasks é uma função para que salva coisas em um array, neste caso, será um array de objetos
+      // prevTasks representa as tarefas que já estão inclusas dentro do array, ... é o spread operator
+      // que usamos para espalhar itens dentro de um array
+      setNewTasks((prevTasks) => [...prevTasks, ...fetchedTasks]);
     } catch (error) {
       console.error("Erro ao buscar os posts", error);
     }
   };
 
   function addFakeTasks() {
+    setShowGenerateFakeMessages(true);
+    setTimeout(() => setShowGenerateFakeMessages(false), 3000);
     fetchPosts(); // Chamamos a função que chama os posts
   }
 
@@ -149,6 +159,8 @@ const TasksProvider = ({ children }: TasksProviderProps) => {
         showEditingMessage,
         setShowReturnMessage,
         showReturnMessage,
+        setShowGenerateFakeMessages,
+        showGenerateFakeMessages,
         // Bloqueia o botão salvar
         setDisabled,
         disabled,
