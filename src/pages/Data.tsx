@@ -4,7 +4,7 @@ import { DefaultTemplate } from "../components/templates/DefaultTemplate";
 import { Text } from "../components/atoms/Text";
 import { Title } from "../components/atoms/Title";
 import { TextContainer } from "../components/atoms/TextContainer";
-import { ComboBox } from "../components/atoms/ComboBox";
+import { Select } from "../components/atoms/ComboBox";
 
 interface IPost {
   userId: number;
@@ -65,7 +65,7 @@ export const Data = () => {
         <Text>
           Para acessar os dados vindos da api você deve selecionar um ID de
           Usuário:
-          <ComboBox
+          <Select
             value={selectedUserId}
             onChange={(e) => setSelectedUserId(Number(e.target.value))}
           >
@@ -74,16 +74,15 @@ export const Data = () => {
                 {userId}
               </option>
             ))}
-          </ComboBox>
+          </Select>
         </Text>
       </TextContainer>
 
       {filteredPosts.map((post: IPost) => (
-        <div key={post.id}>
-          <h1>{post.userId}</h1>
-          <h2>{post.title}</h2>
-          <p>{post.body}</p>
-        </div>
+        <TextContainer key={post.id}>
+          <Title>{post.title}</Title>
+          <Text>{post.body}</Text>
+        </TextContainer>
       ))}
     </DefaultTemplate>
   );

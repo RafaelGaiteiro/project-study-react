@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { Select } from "./styles";
+import { SelectComponent } from "./styles";
 
 type ComboBoxProps = {
   children: ReactNode;
@@ -7,6 +7,6 @@ type ComboBoxProps = {
   onChange?: React.ChangeEventHandler<HTMLSelectElement> | undefined;
 };
 
-export const ComboBox = ({ children, ...props }: ComboBoxProps) => {
-  return <Select {...props}>{children}</Select>;
+export const Select = ({ children, ...props }: ComboBoxProps) => {
+  return <SelectComponent {...props}>{children}</SelectComponent>;
 };

@@ -1,11 +1,5 @@
 import axios from "axios";
-import {
-  ReactNode,
-  createContext,
-  useContext,
-  useState,
-  useEffect,
-} from "react";
+import { ReactNode, createContext, useContext, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 interface IPost {
@@ -47,6 +41,8 @@ interface ITasksContext {
   // Bloqueia o botão salvar
   setDisabled: React.Dispatch<React.SetStateAction<boolean>>;
   disabled: boolean;
+  // Gera as tarefas chamando os dados da Api
+  addFakeTasks(): void;
 }
 
 const TasksContext = createContext<ITasksContext>({} as ITasksContext);
@@ -69,27 +65,28 @@ const TasksProvider = ({ children }: TasksProviderProps) => {
   const [disabled, setDisabled] = useState<boolean>(false);
 
   // Pegando tarefas com API
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        // Requisição GET
-        const response = await axios.get(
-          "https://jsonplaceholder.typicode.com/posts"
-        );
-        // Renderiza a resposta da API, que são posts, aqui estamos salvando como tarefas
-        const fetchedTasks = response.data.map((post: IPost) => ({
-          id: uuidv4(), // Geramos um ID único para que não haja problemas com a manipulação das tarefas
-          title: post.title,
-          description: post.body,
-        }));
-        // Setamos uma nova tarefa
-        setNewTasks(fetchedTasks);
-      } catch (error) {
-        console.error("Erro ao buscar os posts", error);
-      }
-    };
+  const fetchPosts = async () => {
+    try {
+      // Requisição GET
+      const response = await axios.get(
+        "https://jsonplaceholder.typicode.com/posts"
+      );
+      // Renderiza a resposta da API, que são posts, aqui estamos salvando como tarefas
+      const fetchedTasks = response.data.map((post: IPost) => ({
+        id: uuidv4(), // Geramos um ID único para que não haja problemas com a manipulação das tarefas
+        title: post.title,
+        description: post.body,
+      }));
+      // Setamos uma nova tarefa
+      setNewTasks(fetchedTasks);
+    } catch (error) {
+      console.error("Erro ao buscar os posts", error);
+    }
+  };
+
+  function addFakeTasks() {
     fetchPosts(); // Chamamos a função que chama os posts
-  }, []);
+  }
 
   const addNewTask = (title: string, description: string) => {
     const newTask = {
@@ -155,6 +152,8 @@ const TasksProvider = ({ children }: TasksProviderProps) => {
         // Bloqueia o botão salvar
         setDisabled,
         disabled,
+        // Gera as tarefas chamando os dados da Api
+        addFakeTasks,
       }}
     >
       {children}

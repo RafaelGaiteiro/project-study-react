@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-export const Select = styled.select`
+export const SelectComponent = styled.select`
   padding: 10px;
   height: 40px;
 
