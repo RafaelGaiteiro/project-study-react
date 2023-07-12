@@ -4,14 +4,14 @@ import { ReactNode, createContext, useContext, useState } from "react";
 // Interface
 interface IJSONPlaceholderContext {
   getData: () => void;
-  postData: (
-    userId: string,
+  postData: (userId: string, title: string, description: string) => void;
+  deleteData: (id: string) => void;
+  updateData: (
     id: string,
+    userId: string,
     title: string,
     description: string
   ) => void;
-  deleteData: (id: string) => void;
-  updateData: (id: string) => void;
   data: IData[];
 }
 
@@ -50,21 +50,20 @@ const JSONPlaceholderProvider = ({ children }: JSONPlaceholderProps) => {
   };
 
   // POST request
-  const postData = (
-    userId: string,
-    id: string,
-    title: string,
-    description: string
-  ) => {
+  const postData = (userId: string, title: string, description: string) => {
     axios
       .post("https://jsonplaceholder.typicode.com/posts", {
-        userId: { userId },
-        id: { id },
-        title: { title },
-        description: { description },
+        userId: userId,
+        title: title,
+        body: description,
       })
-      .then((response) => console.log(response.data))
-      .catch((error) => console.error("Error: ", error));
+      .then((response) => {
+        console.log(response.data);
+        console.log("Método POST funcionou!");
+      })
+      .catch((error) =>
+        console.error("Método POST não funcionou!\nError: ", error)
+      );
   };
 
   // DELETE request
@@ -76,11 +75,26 @@ const JSONPlaceholderProvider = ({ children }: JSONPlaceholderProps) => {
   };
 
   // PUT request
-  const updateData = (id: string) => {
+  const updateData = (
+    id: string,
+    userId: string,
+    title: string,
+    description: string
+  ) => {
     axios
-      .put(`https://jsonplaceholder.typicode.com/posts/${id}`)
-      .then((response) => console.log(response.data))
-      .catch((error) => console.error("Error: ", error));
+      .put(`https://jsonplaceholder.typicode.com/posts/${id}`, {
+        id: id,
+        userId: userId,
+        title: title,
+        body: description,
+      })
+      .then((response) => {
+        console.log(response.data);
+        console.log("Método PUT funcionou!");
+      })
+      .catch((error) =>
+        console.error("Método PUT não funcionou!\nError: ", error)
+      );
   };
 
   return (

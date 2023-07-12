@@ -12,13 +12,6 @@ export const Home = () => {
           Esta é uma aplicação front-end desenvolvida em ReactJS com TypeScript,
           seguindo a arquitetura Atomic Design.
         </Text>
-
-        <Title> Desafios futuros:</Title>
-        <Text size="4">
-          A principal meta será aprimorar minhas habilidades em ReactJS seguindo
-          princípios como Mobile-First e DRY (Don't Repeat Yourself).
-        </Text>
-
         <Title>Controle de Tarefas</Title>
         <Text size="4">
           Use os controles Adicionar, Editar, Concluir em Tarefas a fazer.

@@ -19,4 +19,9 @@ export const TextAreaComponent = styled.textarea<IStyledInputProps>`
       ? "solid 2px #22A0A0"
       : "solid 2px transparent"};
   resize: none;
+  transition: 0.3s;
+
+  &&:hover {
+    scale: 1.003;
+  }
 `;

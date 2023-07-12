@@ -14,5 +14,12 @@ export const InputComponent = styled.input<IStyledInputProps>`
   background-color: #3b3b3b;
   color: #b0a99f;
   border: ${(props) =>
-    props.bordercolor === 'true' ? "solid 2px #22A0A0" : "solid 2px transparent"};
+    props.bordercolor === "true"
+      ? "solid 2px #22A0A0"
+      : "solid 2px transparent"};
+  transition: 0.3s;
+
+  &&:hover {
+    scale: 1.003;
+  }
 `;

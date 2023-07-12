@@ -18,6 +18,13 @@ export const Data = () => {
           API gratuita JSONPlaceholder. Aqui estamos fazendo requisições GET |
           POST | DELETE | PUT.
         </Text>
+        <Text size="4">
+          É importante destacar que os dados não serão persistidos.
+        </Text>
+        <Text size="4">
+          Você pode ver no console do navegador o retorno da API com a resposta
+          dos dados.
+        </Text>
       </TextContainer>
       <Container flexdirection="column" gap="4px">
         <Get />
