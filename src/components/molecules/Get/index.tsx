@@ -10,8 +10,7 @@ import { IData, useJSONPlaceholder } from "../../../context/JSONPlaceholder";
 export const Get = () => {
   const [filteredData, setFilteredData] = useState<IData[]>([]);
   const [selectedUserId, setSelectedUserId] = useState<number | undefined>();
-  const { getData, postData, deleteData, updateData, data } =
-    useJSONPlaceholder();
+  const { getData, data } = useJSONPlaceholder();
 
   useEffect(() => {
     getData();
