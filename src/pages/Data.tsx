@@ -1,3 +1,4 @@
+import { Container } from "../components/atoms/Container";
 import { Text } from "../components/atoms/Text";
 import { TextContainer } from "../components/atoms/TextContainer";
 import { Title } from "../components/atoms/Title";
@@ -18,10 +19,12 @@ export const Data = () => {
           POST | DELETE | PUT.
         </Text>
       </TextContainer>
-      <Get />
-      <Post />
-      <Put />
-      <Delete />
+      <Container flexdirection="column" gap="4px">
+        <Get />
+        <Post />
+        <Put />
+        <Delete />
+      </Container>
     </DefaultTemplate>
   );
 };

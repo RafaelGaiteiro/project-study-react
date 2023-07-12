@@ -35,8 +35,8 @@ export const Get = () => {
         justifycontent="space-between"
       >
         <Text size="4" disablebackground="true">
-          Para acessar os dados vindos da api você deve selecionar um ID de
-          Usuário:
+          Para fazer a requisição GET e acessar os dados vindos da API você deve
+          selecionar um ID de Usuário:
         </Text>
         <Select onChange={(e) => setSelectedUserId(Number(e.target.value))}>
           <option>Selecione</option>

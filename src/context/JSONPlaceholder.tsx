@@ -4,7 +4,12 @@ import { ReactNode, createContext, useContext, useState } from "react";
 // Interface
 interface IJSONPlaceholderContext {
   getData: () => void;
-  postData: () => void;
+  postData: (
+    userId: string,
+    id: string,
+    title: string,
+    description: string
+  ) => void;
   deleteData: (id: string) => void;
   updateData: (id: string) => void;
   data: IData[];
@@ -45,11 +50,18 @@ const JSONPlaceholderProvider = ({ children }: JSONPlaceholderProps) => {
   };
 
   // POST request
-  const postData = () => {
+  const postData = (
+    userId: string,
+    id: string,
+    title: string,
+    description: string
+  ) => {
     axios
       .post("https://jsonplaceholder.typicode.com/posts", {
-        key1: "value1",
-        key2: "value2",
+        userId: { userId },
+        id: { id },
+        title: { title },
+        description: { description },
       })
       .then((response) => console.log(response.data))
       .catch((error) => console.error("Error: ", error));

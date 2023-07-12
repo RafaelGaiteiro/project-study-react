@@ -80,8 +80,6 @@ export const NewTasks = () => {
           value={title}
           onChange={(event) => setTitle(event.target.value)}
         />
-      </InputGroup>
-      <InputGroup>
         <TextArea
           type="text"
           placeholder="Digite a descrição da tarefa"

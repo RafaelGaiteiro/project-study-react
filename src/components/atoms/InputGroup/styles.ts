@@ -5,4 +5,5 @@ export const InputGroupComponent = styled.div`
   align-items: flex-start;
   justify-content: flex-start;
   flex-direction: column;
+  gap: 4px;
 `;
