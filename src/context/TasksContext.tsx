@@ -179,7 +179,7 @@ const useTasks = () => {
 
   // Garantindo que o hook esteja sendo usado dentro de um TasksProvider
   if (context === undefined) {
-    throw new Error("useTasks must be used within a TasksProvider");
+    throw new Error("useTasks deve ser usado dentro de um TasksProvider");
   }
 
   return context;
