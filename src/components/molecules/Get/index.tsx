@@ -6,6 +6,7 @@ import { Title } from "../../atoms/Title";
 import { Container } from "../../atoms/Container";
 import { MainBox } from "../../atoms/MainBox";
 import { IData, useJSONPlaceholder } from "../../../context/JSONPlaceholder";
+import { Button } from "../../atoms/Button";
 
 export const Get = () => {
   const [filteredData, setFilteredData] = useState<IData[]>([]);
@@ -13,16 +14,16 @@ export const Get = () => {
   const { getData, data } = useJSONPlaceholder();
 
   useEffect(() => {
-    getData();
-  }, []);
-
-  useEffect(() => {
     setFilteredData(
       selectedUserId
         ? data.filter((item) => item.userId === selectedUserId)
         : []
     );
-  }, [selectedUserId]);
+  }, [data, selectedUserId]);
+
+  function handleRequestGet() {
+    getData();
+  }
 
   return (
     <MainBox>
@@ -38,19 +39,22 @@ export const Get = () => {
           Para fazer a requisição GET e acessar os dados vindos da API você deve
           selecionar um ID de Usuário:
         </Text>
-        <Select onChange={(e) => setSelectedUserId(Number(e.target.value))}>
-          <option>Selecione</option>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-          <option>6</option>
-          <option>7</option>
-          <option>8</option>
-          <option>9</option>
-          <option>10</option>
-        </Select>
+        <Container gap="4px" alignitems="center">
+          <Select onChange={(e) => setSelectedUserId(Number(e.target.value))}>
+            <option>Selecione</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+          </Select>
+          <Button onClick={handleRequestGet}>Fazer Requisição</Button>
+        </Container>
       </Container>
       {/* Exibe os resultados filtrados */}
       {filteredData &&
@@ -58,7 +62,7 @@ export const Get = () => {
           <TextContainer key={data.id}>
             <Text size="3">ID: {data.id}</Text>
             <Text size="3">Título: {data.title}</Text>
-            <Text>Descrição: {data.body}</Text>
+            <Text size="3">Descrição: {data.body}</Text>
           </TextContainer>
         ))}
     </MainBox>
