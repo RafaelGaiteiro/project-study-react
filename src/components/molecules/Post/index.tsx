@@ -8,15 +8,7 @@ import { MainBox } from "../../atoms/MainBox";
 import { Text } from "../../atoms/Text";
 import { Title } from "../../atoms/Title";
 
-type DataProps = {
-  userId: string;
-  id: string;
-  title: string;
-  description: string;
-};
-
 export const Post = () => {
-  const [data, setData] = useState<DataProps[]>([]);
   const [userId, setUserId] = useState<string>("");
   const [id, setId] = useState<string>("");
   const [title, setTitle] = useState<string>("");
