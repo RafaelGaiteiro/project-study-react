@@ -3,8 +3,9 @@ import { LabelComponent } from "./styles";
 
 type LabelProps = {
   children: ReactNode;
+  htmlFor?: string | undefined;
 };
 
-export const Label = ({ children }: LabelProps) => {
-  return <LabelComponent>{children}</LabelComponent>;
+export const Label = ({ children, htmlFor }: LabelProps) => {
+  return <LabelComponent htmlFor={htmlFor}>{children}</LabelComponent>;
 };

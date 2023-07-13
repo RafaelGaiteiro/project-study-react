@@ -3,6 +3,7 @@ import { Container } from "../Container";
 import { ButtonComponent } from "./styles";
 
 type ButtonProps = {
+  type?: "button" | "reset" | "submit";
   children: ReactNode;
   onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined;
   disabled?: boolean;

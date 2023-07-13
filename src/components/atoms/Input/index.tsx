@@ -2,10 +2,12 @@ import { useState } from "react";
 import { InputComponent } from "./styles";
 
 export interface IInputProps {
+  id?: string;
   type: string;
-  placeholder: string;
+  placeholder?: string;
   value?: string;
-  onChange: React.ChangeEventHandler<HTMLInputElement> | undefined;
+  onChange?: React.ChangeEventHandler<HTMLInputElement> | undefined;
+  required?: boolean | undefined;
 }
 
 export const Input = ({ ...props }: IInputProps) => {

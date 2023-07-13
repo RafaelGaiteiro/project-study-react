@@ -7,6 +7,7 @@ import { About } from "./pages/About";
 import { Contact } from "./pages/Contact";
 import { Data } from "./pages/Data";
 import { JSONPlaceholderProvider } from "./context/JSONPlaceholder";
+import { Form } from "./pages/Form";
 
 export const App = () => {
   return (
@@ -19,6 +20,7 @@ export const App = () => {
             <Route path="/contact" element={<Contact />} />
             <Route path="/tasks" element={<Tasks />} />
             <Route path="/data" element={<Data />} />
+            <Route path="/form" element={<Form />} />
           </Routes>
           <GlobalStyles />
         </BrowserRouter>

@@ -1,10 +1,16 @@
 import { ReactNode } from "react";
-import { InputGroupComponent } from "./styles";
+import { Header, InputGroupComponent } from "./styles";
 
 type IInputGroupProps = {
   children: ReactNode;
+  title?: ReactNode;
 };
 
-export const InputGroup = ({ children, ...props }: IInputGroupProps) => {
-  return <InputGroupComponent {...props}>{children}</InputGroupComponent>;
+export const InputGroup = ({ children, title, ...props }: IInputGroupProps) => {
+  return (
+    <InputGroupComponent {...props}>
+      <Header>{title}</Header>
+      {children}
+    </InputGroupComponent>
+  );
 };

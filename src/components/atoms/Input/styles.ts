@@ -18,8 +18,7 @@ export const InputComponent = styled.input<IStyledInputProps>`
       ? "solid 2px #22A0A0"
       : "solid 2px transparent"};
   transition: 0.3s;
-
-  &&:hover {
+  calenda &&:hover {
     scale: 1.003;
   }
 `;

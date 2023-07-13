@@ -1,12 +1,13 @@
 import { styled } from "styled-components";
+import { MainBoxStyled } from ".";
 
-export const BoxComponent = styled.div`
+export const BoxComponent = styled.div<MainBoxStyled>`
   display: flex;
-  justify-content: space-between;
+  justify-content: ${(props) => props.justifycontent};
   align-items: flex-start;
   gap: 10px;
   flex-wrap: wrap;
-  width: 100%;
+  width: ${(props) => (props.width ? props.width : "50%")};
   height: max-content;
 
   box-sizing: border-box;
@@ -28,4 +29,8 @@ export const Title = styled.h1`
   font-size: 37px;
   font-weight: 700;
   color: white;
+
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 `;

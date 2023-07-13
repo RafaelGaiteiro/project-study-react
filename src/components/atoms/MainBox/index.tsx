@@ -7,9 +7,23 @@ type MainBoxProps = {
   title: ReactNode;
 };
 
-export const MainBox = ({ children, title }: MainBoxProps) => {
+export type MainBoxStyled = {
+  width?: string;
+  justifycontent?:
+    | "start"
+    | "center"
+    | "space-between"
+    | "space-around"
+    | "space-evenly";
+};
+
+export const MainBox = ({
+  children,
+  title,
+  ...props
+}: MainBoxProps & MainBoxStyled) => {
   return (
-    <BoxComponent>
+    <BoxComponent {...props}>
       <Title>{title}</Title>
       {children}
     </BoxComponent>

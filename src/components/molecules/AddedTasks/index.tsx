@@ -54,7 +54,7 @@ export const AddedTasks = () => {
   return (
     <Container gap="10px">
       <BoxLeft>
-        <MainBox title="Tarefas a fazer">
+        <MainBox title="Tarefas a fazer" justifycontent="space-between">
           <Text size="7">{newTaskCount}</Text>
           <Box>
             <NewTasks />
@@ -88,7 +88,7 @@ export const AddedTasks = () => {
 
       <BoxRight>
         {completedTasks.length > 0 && (
-          <MainBox title="Tarefas a fazer">
+          <MainBox title="Tarefas concluídas" justifycontent="space-between">
             <Text size="7">{completedTaskCount}</Text>
             {completedTasks.map((task: ITask) => (
               <TaskCard key={task.id}>
