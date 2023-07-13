@@ -18,7 +18,7 @@ export const Delete = () => {
 
   return (
     <Container>
-      <MainBox title="DELETE">
+      <MainBox title="DELETE" width="50%">
         <Box>
           <Text size="4" disablebackground="true">
             Para acessar os dados vindos da api você deve selecionar um ID de

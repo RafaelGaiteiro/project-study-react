@@ -7,7 +7,7 @@ export const BoxComponent = styled.div<MainBoxStyled>`
   align-items: flex-start;
   gap: 10px;
   flex-wrap: wrap;
-  width: ${(props) => (props.width ? props.width : "50%")};
+  width: ${(props) => (props.width ? props.width : "100%")};
   height: max-content;
 
   box-sizing: border-box;

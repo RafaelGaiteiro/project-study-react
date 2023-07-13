@@ -22,7 +22,7 @@ export const Put = () => {
 
   return (
     <Container>
-      <MainBox title="PUT">
+      <MainBox title="PUT" width="50%">
         <Box>
           <Text size="4" disablebackground="true">
             Para fazer a requisição PUT preencha os campos e clique em enviar. O

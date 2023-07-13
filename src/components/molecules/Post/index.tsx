@@ -21,7 +21,7 @@ export const Post = () => {
 
   return (
     <Container>
-      <MainBox title="POST">
+      <MainBox title="POST" width="50%">
         <Box>
           <Text size="4" disablebackground="true">
             Para fazer a requisição POST preencha os campos e clique em enviar.

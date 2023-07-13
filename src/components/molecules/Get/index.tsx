@@ -26,7 +26,7 @@ export const Get = () => {
   }
 
   return (
-    <MainBox title="GET">
+    <MainBox title="GET" width="50%">
       <Box>
         <Text size="4" disablebackground="true">
           Para fazer a requisição GET e acessar os dados vindos da API você deve
