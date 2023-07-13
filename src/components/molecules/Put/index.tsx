@@ -6,7 +6,7 @@ import { Input } from "../../atoms/Input";
 import { InputGroup } from "../../atoms/InputGroup";
 import { MainBox } from "../../atoms/MainBox";
 import { Text } from "../../atoms/Text";
-import { Title } from "../../atoms/Title";
+import { Box } from "../../atoms/Box";
 
 export const Put = () => {
   const [id, setId] = useState<string>("");
@@ -22,19 +22,11 @@ export const Put = () => {
 
   return (
     <Container>
-      <MainBox>
-        <Title disablebackground="true">PUT</Title>
-        <Container
-          width="100%"
-          padding="8px"
-          radius="8px"
-          backgroundcolor="#1b1e1f"
-          justifycontent="space-between"
-          flexdirection="column"
-        >
+      <MainBox title="PUT">
+        <Box>
           <Text size="4" disablebackground="true">
-            Para fazer a requisição POST preencha os campos e clique em enviar.
-            O id deve estar entre 1 e 100.
+            Para fazer a requisição PUT preencha os campos e clique em enviar. O
+            id deve estar entre 1 e 100.
           </Text>
           <InputGroup>
             <Input
@@ -57,9 +49,9 @@ export const Put = () => {
               placeholder="Escreva a descrição"
               onChange={(e) => setDescription(e.target.value)}
             />
-            <Button onClick={handleSubmit}>Enviar</Button>
+            <Button onClick={handleSubmit}>Atualizar</Button>
           </InputGroup>
-        </Container>
+        </Box>
       </MainBox>
     </Container>
   );

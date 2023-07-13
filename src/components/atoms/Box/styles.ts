@@ -2,17 +2,10 @@ import { styled } from "styled-components";
 
 export const BoxComponent = styled.div`
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
+  flex-direction: column;
   gap: 10px;
-  flex-wrap: wrap;
   width: 100%;
-  height: max-content;
-
-  box-sizing: border-box;
-  background-color: #155163;
-
+  background-color: #1b1e1f;
   border-radius: 8px;
-
   padding: 4px;
 `;

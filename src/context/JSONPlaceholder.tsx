@@ -70,7 +70,10 @@ const JSONPlaceholderProvider = ({ children }: JSONPlaceholderProps) => {
   const deleteData = (id: string) => {
     axios
       .delete(`https://jsonplaceholder.typicode.com/posts/${id}`)
-      .then((response) => console.log(response.data))
+      .then((response) => {
+        console.log(response.data);
+        console.log("Método DELETE funcionou!");
+      })
       .catch((error) => console.error("Error: ", error));
   };
 

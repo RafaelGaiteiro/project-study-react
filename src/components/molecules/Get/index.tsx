@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import { TextContainer } from "../../atoms/TextContainer";
 import { Text } from "../../atoms/Text";
 import { Select } from "../../atoms/ComboBox";
-import { Title } from "../../atoms/Title";
 import { Container } from "../../atoms/Container";
 import { MainBox } from "../../atoms/MainBox";
 import { IData, useJSONPlaceholder } from "../../../context/JSONPlaceholder";
 import { Button } from "../../atoms/Button";
+import { Box } from "../../atoms/Box";
 
 export const Get = () => {
   const [filteredData, setFilteredData] = useState<IData[]>([]);
@@ -26,15 +26,8 @@ export const Get = () => {
   }
 
   return (
-    <MainBox>
-      <Title disablebackground="true">GET</Title>
-      <Container
-        width="100%"
-        padding="8px"
-        radius="8px"
-        backgroundcolor="#1b1e1f"
-        justifycontent="space-between"
-      >
+    <MainBox title="GET">
+      <Box>
         <Text size="4" disablebackground="true">
           Para fazer a requisição GET e acessar os dados vindos da API você deve
           selecionar um ID de Usuário:
@@ -55,7 +48,7 @@ export const Get = () => {
           </Select>
           <Button onClick={handleRequestGet}>Fazer Requisição</Button>
         </Container>
-      </Container>
+      </Box>
       {/* Exibe os resultados filtrados */}
       {filteredData &&
         filteredData.map((data: IData) => (

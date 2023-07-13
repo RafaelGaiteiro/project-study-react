@@ -6,7 +6,7 @@ import { Input } from "../../atoms/Input";
 import { InputGroup } from "../../atoms/InputGroup";
 import { MainBox } from "../../atoms/MainBox";
 import { Text } from "../../atoms/Text";
-import { Title } from "../../atoms/Title";
+import { Box } from "../../atoms/Box";
 
 export const Post = () => {
   const [userId, setUserId] = useState<string>("");
@@ -21,16 +21,8 @@ export const Post = () => {
 
   return (
     <Container>
-      <MainBox>
-        <Title disablebackground="true">POST</Title>
-        <Container
-          width="100%"
-          padding="8px"
-          radius="8px"
-          backgroundcolor="#1b1e1f"
-          justifycontent="space-between"
-          flexdirection="column"
-        >
+      <MainBox title="POST">
+        <Box>
           <Text size="4" disablebackground="true">
             Para fazer a requisição POST preencha os campos e clique em enviar.
           </Text>
@@ -52,7 +44,7 @@ export const Post = () => {
             />
             <Button onClick={handleSubmit}>Enviar</Button>
           </InputGroup>
-        </Container>
+        </Box>
       </MainBox>
     </Container>
   );

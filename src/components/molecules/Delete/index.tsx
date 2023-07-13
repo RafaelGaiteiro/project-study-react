@@ -1,25 +1,38 @@
+import { useState } from "react";
+import { useJSONPlaceholder } from "../../../context/JSONPlaceholder";
+import { Button } from "../../atoms/Button";
 import { Container } from "../../atoms/Container";
+import { Input } from "../../atoms/Input";
+import { InputGroup } from "../../atoms/InputGroup";
 import { MainBox } from "../../atoms/MainBox";
 import { Text } from "../../atoms/Text";
-import { Title } from "../../atoms/Title";
+import { Box } from "../../atoms/Box";
 
 export const Delete = () => {
+  const [id, setId] = useState<string>("1");
+  const { deleteData } = useJSONPlaceholder();
+
+  function handleSubmit() {
+    deleteData(id);
+  }
+
   return (
     <Container>
-      <MainBox>
-        <Title disablebackground="true">DELETE</Title>
-        <Container
-          width="100%"
-          padding="8px"
-          radius="8px"
-          backgroundcolor="#1b1e1f"
-          justifycontent="space-between"
-        >
+      <MainBox title="DELETE">
+        <Box>
           <Text size="4" disablebackground="true">
             Para acessar os dados vindos da api você deve selecionar um ID de
             Usuário:
           </Text>
-        </Container>
+          <InputGroup>
+            <Input
+              type="text"
+              placeholder="Escreva o id"
+              onChange={(e) => setId(e.target.value)}
+            />
+            <Button onClick={handleSubmit}>Deletar</Button>
+          </InputGroup>
+        </Box>
       </MainBox>
     </Container>
   );

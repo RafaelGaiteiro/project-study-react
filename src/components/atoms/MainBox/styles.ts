@@ -2,11 +2,11 @@ import { styled } from "styled-components";
 
 export const BoxComponent = styled.div`
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: flex-start;
   gap: 10px;
   flex-wrap: wrap;
-  width: 50%;
+  width: 100%;
   height: max-content;
 
   box-sizing: border-box;
@@ -14,5 +14,18 @@ export const BoxComponent = styled.div`
 
   border-radius: 8px;
 
-  padding: 4px;
+  padding-top: 4px;
+  padding-right: 4px;
+  padding-bottom: 4px;
+  padding-left: 4px;
+`;
+
+export const Title = styled.h1`
+  background-color: transparent;
+  padding-left: 12px;
+  border-radius: 4px;
+  color: white;
+  font-size: 37px;
+  font-weight: 700;
+  color: white;
 `;

@@ -72,7 +72,7 @@ export const NewTasks = () => {
   }
 
   return (
-    <Container flexdirection="column" gap="10px" width="100%">
+    <>
       <InputGroup>
         <Input
           type="text"
@@ -137,6 +137,6 @@ export const NewTasks = () => {
           </Message>
         )}
       </Container>
-    </Container>
+    </>
   );
 };
