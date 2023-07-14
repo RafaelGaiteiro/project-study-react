@@ -8,8 +8,6 @@ export const Header = () => {
     <Container>
       <LinkGroup>
         <Link onClick={() => navigate("/")}>Home</Link>
-        <Link onClick={() => navigate("/about")}>Sobre</Link>
-        <Link onClick={() => navigate("/contact")}>Contato</Link>
         <Link onClick={() => navigate("/tasks")}>Tarefas</Link>
         <Link onClick={() => navigate("/data")}>Requisições</Link>
         <Link onClick={() => navigate("/form")}>Formulário</Link>
