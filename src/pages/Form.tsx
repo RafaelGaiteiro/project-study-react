@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
@@ -10,6 +11,7 @@ import { Label } from "../components/atoms/Label";
 import { MainBox } from "../components/atoms/MainBox";
 import { DefaultTemplate } from "../components/templates/DefaultTemplate";
 import { MessageAlert } from "../components/atoms/MessageAlert";
+import { viaCep } from "../services/viaCep";
 
 const schema = object({
   name: string().required("Você precisa informar o seu nome."),
@@ -26,9 +28,9 @@ const schema = object({
   telephone: string()
     .required("Você precisa informar o seu telefone.")
     .max(13, "O telefone não pode conter mais de 13 dígitos."),
-  secondaryPhone: string().required(
-    "Você precisa informar o seu telefone secundário."
-  ),
+  secondaryPhone: string()
+    .required("Você precisa informar o seu telefone secundário.")
+    .max(13, "O telefone secundário não pode conter mais de 13 dígitos."),
   password: string()
     .required("Você precisa informar a sua senha.")
     .min(4, "A senha deve conter ao mínimo 4 dígitos.")
@@ -51,7 +53,25 @@ export const Form = () => {
     register,
     handleSubmit,
     formState: { errors },
+    watch,
+    setValue,
   } = useForm({ resolver: yupResolver(schema) });
+
+  const cep = watch("cep");
+
+  useEffect(() => {
+    if (cep && cep.length === 8) {
+      viaCep(cep).then((data) => {
+        if (data) {
+          setValue("street", data.logradouro);
+          setValue("neighborhood", data.bairro);
+          setValue("city", data.localidade);
+          setValue("state", data.uf);
+          setValue("country", "Brasil");
+        }
+      });
+    }
+  }, [cep]);
 
   function handleForm(data: any) {
     console.log("Fui chamado!");

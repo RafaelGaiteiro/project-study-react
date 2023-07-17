@@ -18,16 +18,20 @@ export const Container = styled.div`
   user-select: none; /* Standard syntax */
 
   @keyframes animationAlert {
-    0% {
-      transform: translateX(0);
-    }
-    50% {
-      transform: translateX(16px);
-    }
-    100% {
-      transform: translateX(0);
-    }
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  
+  10%, 30%, 50%, 70%, 90% {
+    transform: translate3d(-2px, 0, 0);
   }
 
-  animation: 1s ease-out 0s 1 animationAlert;
+  20%, 40%, 60%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+}
+
+
+
+  animation: animationAlert 0.6s ease-in-out;
 `;
