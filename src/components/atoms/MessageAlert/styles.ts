@@ -1,12 +1,11 @@
 import { styled } from "styled-components";
-import { MessageProps } from ".";
 
-export const ContainerMessage = styled.div<MessageProps>`
+export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: start;
-  padding: 10px;
-  background-color: ${(props) => props.backgroundcolor};
+  padding: 4px 8px;
+  background-color: #db3f69;
   width: 100%;
 
   color: white;
@@ -18,7 +17,7 @@ export const ContainerMessage = styled.div<MessageProps>`
   -ms-user-select: none; /* IE 10 and IE 11 */
   user-select: none; /* Standard syntax */
 
-  @keyframes animationMessage {
+  @keyframes animationAlert {
     0% {
       transform: translateX(0);
     }
@@ -30,5 +29,5 @@ export const ContainerMessage = styled.div<MessageProps>`
     }
   }
 
-  animation: 1s ease-out 0s 1 animationMessage;
+  animation: 1s ease-out 0s 1 animationAlert;
 `;

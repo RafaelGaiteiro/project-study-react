@@ -1,16 +1,24 @@
 import { ReactNode } from "react";
-import { Header, InputGroupComponent } from "./styles";
+import { Content, Header, InputGroupComponent } from "./styles";
 
-type IInputGroupProps = {
-  children: ReactNode;
+export type IHeaderProps = {
   title?: ReactNode;
 };
 
-export const InputGroup = ({ children, title, ...props }: IInputGroupProps) => {
+export type IInputGroupProps = {
+  children: ReactNode;
+  leftspacing?: "true" | "false";
+};
+
+export const InputGroup = ({
+  children,
+  title,
+  leftspacing,
+}: IInputGroupProps & IHeaderProps) => {
   return (
-    <InputGroupComponent {...props}>
+    <InputGroupComponent>
       <Header>{title}</Header>
-      {children}
+      <Content leftspacing={leftspacing}>{children}</Content>
     </InputGroupComponent>
   );
 };

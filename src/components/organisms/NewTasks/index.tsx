@@ -1,13 +1,16 @@
+import { useState } from "react";
 import { Container } from "../../atoms/Container";
 import { Input } from "../../atoms/Input";
 import { Button } from "../../atoms/Button";
-import { useState } from "react";
 import { useTasks } from "../../../context/TasksContext";
 import { InputGroup } from "../../atoms/InputGroup";
-import { Message } from "../../atoms/Message";
+import { Alert } from "../../atoms/Alert";
 import { TextArea } from "../../atoms/TextArea";
+import { useAlert } from "../../../context/Alert";
 
 export const NewTasks = () => {
+  const [showEditingControls, setShowEditingControls] =
+    useState<boolean>(false);
   const {
     setTitle,
     title,
@@ -16,57 +19,56 @@ export const NewTasks = () => {
     setDisabled,
     addNewTask,
     addFakeTasks,
-    // Mensagens
-    showRemoveMessage,
-    showCompletedMessage,
-    setShowEditingMessage,
-    showReturnMessage,
-    setShowRemoveMessage,
-    showEditingMessage,
-    showGenerateFakeMessages,
   } = useTasks();
-  const [showNewMessage, setShowNewMessage] = useState<boolean>(false);
-  const [showNullFieldsMessage, setShowNullFieldsMessage] =
-    useState<boolean>(false);
+  const { alerts, showAlert } = useAlert();
 
-  function handleAdd() {
+  function handleAddNewTask() {
     if (title === "") {
-      setShowNullFieldsMessage(true);
-      setTimeout(() => setShowNullFieldsMessage(false), 3000);
+      // Mostra a mensagem
+      showAlert({
+        message: "Você não pode adicionar uma tarefa sem título!",
+        backgroundColor: "#ceb54d",
+      });
     } else {
+      // Adiciona os dados
       addNewTask(title, description);
-      setShowNewMessage(true);
-      setTimeout(() => setShowNewMessage(false), 3000);
+      // Mostra o alerta
+      showAlert({
+        message: "Tarefa adicionada com sucesso!",
+        backgroundColor: "#2bc990",
+      });
+      // Limpa os campos
+      setTitle("");
+      setDescription("");
     }
-    // Limpa os campos dos inputs
-    setTitle("");
-    setDescription("");
   }
 
-  function handleSave() {
+  function handleSaveTask() {
     if (title === "") {
-      setShowNullFieldsMessage(true);
-      setTimeout(() => setShowNullFieldsMessage(false), 3000);
+      // Mostra o alerta
+      showAlert({
+        message: "Você não pode adicionar uma tarefa sem título!",
+        backgroundColor: "#ceb54d",
+      });
     } else {
+      // Adiciona a tarefa
       addNewTask(title, description);
-      // Usa o estado da mensagem para desabilitar o modo de salvamento
-      setShowEditingMessage(false);
-      setShowNewMessage(true);
-      setTimeout(() => setShowNewMessage(false), 3000);
-      setDisabled(false);
-      // Limpa os campos dos inputs
+      // Mostra o alerta
+      showAlert({
+        message: "Tarefa salva com sucesso!",
+        backgroundColor: "#2bc990",
+      });
+      // Limpa os campos
       setTitle("");
       setDescription("");
     }
   }
 
   function handleDelete() {
-    setShowRemoveMessage(true);
-    setTimeout(() => setShowRemoveMessage(false), 3000);
-    // Usa o estado da mensagem para desabilitar o modo de salvamento
-    setShowEditingMessage(false);
-    setDisabled(false);
-    // Limpa os campos dos inputs
+    showAlert({
+      message: "Tarefa removida com sucesso!",
+      backgroundColor: "#a3080c",
+    });
     setTitle("");
     setDescription("");
   }
@@ -88,54 +90,24 @@ export const NewTasks = () => {
         />
       </InputGroup>
       <Container flexdirection="row" width="100%" gap="10px">
-        {/* Usa o estado da mensagem para habilitar o modo de salvamento */}
-        {!showEditingMessage && (
+        {!showEditingControls && (
           <>
-            <Button onClick={handleAdd}>Adicionar</Button>
+            <Button onClick={handleAddNewTask}>Adicionar</Button>
             <Button onClick={addFakeTasks}>Gerar Tarefas</Button>
           </>
         )}
 
-        {showEditingMessage && (
+        {showEditingControls && (
           <>
-            <Button onClick={handleSave}>Salvar</Button>
+            <Button onClick={handleSaveTask}>Salvar</Button>
             <Button onClick={handleDelete}>Remover</Button>
           </>
         )}
-
-        {showNewMessage && (
-          <Message backgroundcolor="#2bc990">Tarefa salva com sucesso!</Message>
-        )}
-        {showRemoveMessage && (
-          <Message backgroundcolor="#a3080c">
-            Tarefa removida com sucesso!
-          </Message>
-        )}
-        {showNullFieldsMessage && (
-          <Message backgroundcolor="#ceb54d">
-            Você não pode adicionar uma tarefa sem título!
-          </Message>
-        )}
-        {showCompletedMessage && (
-          <Message backgroundcolor="#2991c9">
-            Tarefa concluída com sucesso!
-          </Message>
-        )}
-        {showEditingMessage && (
-          <Message backgroundcolor="#d18e54">
-            Você está editando a tarefa!
-          </Message>
-        )}
-        {showReturnMessage && (
-          <Message backgroundcolor="#469085">
-            Você trouxe uma tarefa de volta!
-          </Message>
-        )}
-        {showGenerateFakeMessages && (
-          <Message backgroundcolor="#a87364">
-            Você gerou tarefas com dados da API JSONPlaceholder!
-          </Message>
-        )}
+        {alerts.map((alert, index) => (
+          <Alert key={index} backgroundcolor={alert.backgroundColor}>
+            {alert.message}
+          </Alert>
+        ))}
       </Container>
     </>
   );

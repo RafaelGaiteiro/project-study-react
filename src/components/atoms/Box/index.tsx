@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { BoxComponent } from "./styles";
 
-type BoxProps = {
+export type BoxProps = {
   children: ReactNode;
 };
 

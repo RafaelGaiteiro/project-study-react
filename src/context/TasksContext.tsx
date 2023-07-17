@@ -1,6 +1,7 @@
 import axios from "axios";
 import { ReactNode, createContext, useContext, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import { useAlert } from "./Alert";
 
 interface IPost {
   id: number;
@@ -22,17 +23,6 @@ interface ITasksContext {
   addCompletedTask: (id: string, title: string, description: string) => void;
   removeCompletedTask: (id: string) => void;
   editNewTask: (id: string, title: string, description: string) => void;
-  // Messages
-  showRemoveMessage: boolean;
-  setShowRemoveMessage: React.Dispatch<React.SetStateAction<boolean>>;
-  showCompletedMessage: boolean;
-  setShowCompletedMessage: React.Dispatch<React.SetStateAction<boolean>>;
-  showEditingMessage: boolean;
-  setShowEditingMessage: React.Dispatch<React.SetStateAction<boolean>>;
-  showReturnMessage: boolean;
-  setShowReturnMessage: React.Dispatch<React.SetStateAction<boolean>>;
-  showGenerateFakeMessages: boolean;
-  setShowGenerateFakeMessages: React.Dispatch<React.SetStateAction<boolean>>;
   // Data
   id: string;
   title: string;
@@ -54,20 +44,13 @@ type TasksProviderProps = {
 };
 
 const TasksProvider = ({ children }: TasksProviderProps) => {
+  const { showAlert } = useAlert();
   const [newTasks, setNewTasks] = useState<ITask[]>([]);
   const [completedTasks, setCompletedTasks] = useState<ITask[]>([]);
   const [id, setId] = useState<string>("");
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   const [disabled, setDisabled] = useState<boolean>(false);
-  // Estados das mensagens
-  const [showRemoveMessage, setShowRemoveMessage] = useState<boolean>(false);
-  const [showCompletedMessage, setShowCompletedMessage] =
-    useState<boolean>(false);
-  const [showEditingMessage, setShowEditingMessage] = useState<boolean>(false);
-  const [showReturnMessage, setShowReturnMessage] = useState<boolean>(false);
-  const [showGenerateFakeMessages, setShowGenerateFakeMessages] =
-    useState<boolean>(false);
 
   // Pegando tarefas com API
   const fetchPosts = async () => {
@@ -93,8 +76,10 @@ const TasksProvider = ({ children }: TasksProviderProps) => {
   };
 
   function addFakeTasks() {
-    setShowGenerateFakeMessages(true);
-    setTimeout(() => setShowGenerateFakeMessages(false), 3000);
+    showAlert({
+      message: "Você gerou tarefas com dados da API JSONPlaceholder!",
+      backgroundColor: "#a87364",
+    });
     fetchPosts(); // Chamamos a função que chama os posts
   }
 
@@ -130,7 +115,6 @@ const TasksProvider = ({ children }: TasksProviderProps) => {
     setId(id);
     setTitle(title);
     setDescription(description);
-    setShowEditingMessage(true);
     setDisabled(true);
   };
 
@@ -150,17 +134,6 @@ const TasksProvider = ({ children }: TasksProviderProps) => {
         addCompletedTask,
         removeCompletedTask,
         completedTasks,
-        // Messages
-        setShowRemoveMessage,
-        showRemoveMessage,
-        setShowCompletedMessage,
-        showCompletedMessage,
-        setShowEditingMessage,
-        showEditingMessage,
-        setShowReturnMessage,
-        showReturnMessage,
-        setShowGenerateFakeMessages,
-        showGenerateFakeMessages,
         // Bloqueia o botão salvar
         setDisabled,
         disabled,

@@ -6,36 +6,37 @@ import { NewTasks } from "../../organisms/NewTasks";
 import { Text } from "../../atoms/Text";
 import { Box } from "../../atoms/Box";
 import { MainBox } from "../../atoms/MainBox";
+import { useAlert } from "../../../context/Alert";
 
 export const AddedTasks = () => {
+  const { showAlert } = useAlert();
   const {
     addNewTask,
     newTasks,
     removeNewTask,
     completedTasks,
-    setShowCompletedMessage,
     addCompletedTask,
     removeCompletedTask,
-    setShowRemoveMessage,
     editNewTask,
     disabled,
-    setShowReturnMessage,
   } = useTasks();
 
   function handleAddTask(id: string, title: string, description: string) {
     addCompletedTask(id, title, description);
-    setShowCompletedMessage(true);
-    setTimeout(() => setShowCompletedMessage(false), 3000);
     removeNewTask(id);
   }
 
   function handleCompletedTask(id: string) {
     removeCompletedTask(id);
-    setShowRemoveMessage(true);
-    setTimeout(() => setShowRemoveMessage(false), 3000);
   }
 
   function handleEditNewTask(id: string, title: string, description: string) {
+    // Mostra o alerta
+    showAlert({
+      message: "Você está editando a tarefa!",
+      backgroundColor: "#d18e54",
+    });
+    console.log("aqui");
     removeNewTask(id);
     editNewTask(id, title, description);
   }
@@ -43,8 +44,6 @@ export const AddedTasks = () => {
   function handleReturnTask(id: string, title: string, description: string) {
     addNewTask(title, description);
     removeCompletedTask(id); // Remove das tasks concluídas
-    setShowReturnMessage(true);
-    setTimeout(() => setShowReturnMessage(false), 3000);
   }
 
   const newTaskCount = newTasks.length; // Quantidade de Tarefas a fazer
@@ -68,7 +67,7 @@ export const AddedTasks = () => {
                   onClick={() =>
                     handleEditNewTask(task.id, task.title, task.description)
                   }
-                  disabled={disabled}
+                  // disabled={disabled}
                 >
                   Editar
                 </Button>

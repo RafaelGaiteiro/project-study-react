@@ -1,12 +1,14 @@
 import { styled } from "styled-components";
+import { ButtonProps } from ".";
 
-export const ButtonComponent = styled.button`
+export const ButtonComponent = styled.button<ButtonProps>`
   display: flex;
   justify-content: center;
   align-items: center;
 
   padding: 10px;
   height: 40px;
+  width: ${(props) => props.width};
 
   font-size: 13px;
   font-weight: 600;

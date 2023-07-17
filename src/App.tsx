@@ -6,21 +6,24 @@ import { Home } from "./pages/Home";
 import { Data } from "./pages/Data";
 import { JSONPlaceholderProvider } from "./context/JSONPlaceholder";
 import { Form } from "./pages/Form";
+import { AlertProvider } from "./context/Alert";
 
 export const App = () => {
   return (
     <JSONPlaceholderProvider>
-      <TasksProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/tasks" element={<Tasks />} />
-            <Route path="/data" element={<Data />} />
-            <Route path="/form" element={<Form />} />
-          </Routes>
-          <GlobalStyles />
-        </BrowserRouter>
-      </TasksProvider>
+      <AlertProvider>
+        <TasksProvider>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/tasks" element={<Tasks />} />
+              <Route path="/data" element={<Data />} />
+              <Route path="/form" element={<Form />} />
+            </Routes>
+            <GlobalStyles />
+          </BrowserRouter>
+        </TasksProvider>
+      </AlertProvider>
     </JSONPlaceholderProvider>
   );
 };

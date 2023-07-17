@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, forwardRef } from "react";
 import { InputComponent } from "./styles";
 
 export interface IInputProps {
@@ -10,15 +10,16 @@ export interface IInputProps {
   required?: boolean | undefined;
 }
 
-export const Input = ({ ...props }: IInputProps) => {
+export const Input = forwardRef<HTMLInputElement, IInputProps>((props, ref) => {
   const [borderColor, setBorderColor] = useState<boolean>(false);
 
   return (
     <InputComponent
       {...props}
+      ref={ref}
       bordercolor={borderColor ? "true" : "false"}
       onFocus={() => setBorderColor(true)}
       onBlur={() => setBorderColor(false)}
     />
   );
-};
+});
