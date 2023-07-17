@@ -1,5 +1,6 @@
-import { useForm, SubmitHandler } from "react-hook-form";
+import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
 import { object, string } from "yup";
 import { Box } from "../components/atoms/Box";
 import { Button } from "../components/atoms/Button";
@@ -8,26 +9,36 @@ import { InputGroup } from "../components/atoms/InputGroup";
 import { Label } from "../components/atoms/Label";
 import { MainBox } from "../components/atoms/MainBox";
 import { DefaultTemplate } from "../components/templates/DefaultTemplate";
-import { Alert } from "../components/atoms/Alert";
 import { MessageAlert } from "../components/atoms/MessageAlert";
 
 const schema = object({
   name: string().required("Você precisa informar o seu nome."),
   surname: string().required("Você precisa informar o seu sobrenome."),
-  cpf: string().required("Você precisa informar o seu CPF."),
-  rg: string().required("Você precisa informar o seu RG."),
+  cpf: string()
+    .required("Você precisa informar o seu CPF.")
+    .max(11, "O CPF não pode conter mais de 11 dígitos."),
+  rg: string()
+    .required("Você precisa informar o seu RG.")
+    .max(11, "O CPF não pode conter mais de 11 dígitos."),
   birth: string().required("Você precisa informar a sua data de nascimento."),
   fathersName: string().required("Você precisa informar o nome do seu pai."),
   mothersName: string().required("Você precisa informar o nome da sua mãe."),
-  telephone: string().required("Você precisa informar o seu telefone."),
+  telephone: string()
+    .required("Você precisa informar o seu telefone.")
+    .max(13, "O telefone não pode conter mais de 13 dígitos."),
   secondaryPhone: string().required(
     "Você precisa informar o seu telefone secundário."
   ),
-  password: string().required("Você precisa informar a sua senha."),
-  passwordConfirmation: string().required(
-    "Você precisa informar a sua senha novamente."
-  ),
-  cep: string().required("Você precisa informar o seu CEP."),
+  password: string()
+    .required("Você precisa informar a sua senha.")
+    .min(4, "A senha deve conter ao mínimo 4 dígitos.")
+    .max(20, "A senha não pode conter mais de 20 dígitos."),
+  passwordConfirmation: string()
+    .required("Você precisa informar a sua senha novamente.")
+    .oneOf([yup.ref("password")], "As senhas não se coincidem."),
+  cep: string()
+    .required("Você precisa informar o seu CEP.")
+    .max(8, "O CEP não pode conter mais de 8 dígitos."),
   street: string().required("Você precisa informar a sua rua."),
   neighborhood: string().required("Você precisa informar a seu bairro."),
   city: string().required("Você precisa informar a sua cidade."),
@@ -39,7 +50,6 @@ export const Form = () => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 

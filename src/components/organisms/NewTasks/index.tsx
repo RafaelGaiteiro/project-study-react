@@ -9,14 +9,12 @@ import { TextArea } from "../../atoms/TextArea";
 import { useAlert } from "../../../context/Alert";
 
 export const NewTasks = () => {
-  const [showEditingControls, setShowEditingControls] =
-    useState<boolean>(false);
+  const [showEditingControls] = useState<boolean>(false);
   const {
     setTitle,
     title,
     setDescription,
     description,
-    setDisabled,
     addNewTask,
     addFakeTasks,
   } = useTasks();
