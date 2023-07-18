@@ -7,6 +7,8 @@ import { Alert } from "../../atoms/Alert";
 import { TextArea } from "../../atoms/TextArea";
 import { useAlert } from "../../../context/Alert";
 import { Topic } from "../../atoms/Topic";
+import { Box } from "../../atoms/Box";
+import { InputGroup } from "../../atoms/InputGroup";
 
 export const NewTasks = () => {
   const [showEditingControls] = useState<boolean>(false);
@@ -72,41 +74,43 @@ export const NewTasks = () => {
   }
 
   return (
-    <>
+    <Box>
       <Topic>
-        <Input
-          type="text"
-          placeholder="Digite o título da tarefa"
-          value={title}
-          onChange={(event) => setTitle(event.target.value)}
-        />
-        <TextArea
-          type="text"
-          placeholder="Digite a descrição da tarefa"
-          value={description}
-          onChange={(event) => setDescription(event.target.value)}
-        />
-      </Topic>
-      <Flex flexdirection="row" width="100%" gap="10px">
-        {!showEditingControls && (
-          <>
-            <Button onClick={handleAddNewTask}>Adicionar</Button>
-            <Button onClick={addFakeTasks}>Gerar Tarefas</Button>
-          </>
-        )}
+        <InputGroup>
+          <Input
+            type="text"
+            placeholder="Digite o título da tarefa"
+            value={title}
+            onChange={(event) => setTitle(event.target.value)}
+          />
+          <TextArea
+            type="text"
+            placeholder="Digite a descrição da tarefa"
+            value={description}
+            onChange={(event) => setDescription(event.target.value)}
+          />
+        </InputGroup>
+        <Flex flexdirection="row" width="100%" gap="10px">
+          {!showEditingControls && (
+            <>
+              <Button onClick={handleAddNewTask}>Adicionar</Button>
+              <Button onClick={addFakeTasks}>Gerar Tarefas</Button>
+            </>
+          )}
 
-        {showEditingControls && (
-          <>
-            <Button onClick={handleSaveTask}>Salvar</Button>
-            <Button onClick={handleDelete}>Remover</Button>
-          </>
-        )}
-        {alerts.map((alert, index) => (
-          <Alert key={index} backgroundcolor={alert.backgroundColor}>
-            {alert.message}
-          </Alert>
-        ))}
-      </Flex>
-    </>
+          {showEditingControls && (
+            <>
+              <Button onClick={handleSaveTask}>Salvar</Button>
+              <Button onClick={handleDelete}>Remover</Button>
+            </>
+          )}
+          {alerts.map((alert, index) => (
+            <Alert key={index} backgroundcolor={alert.backgroundColor}>
+              {alert.message}
+            </Alert>
+          ))}
+        </Flex>
+      </Topic>
+    </Box>
   );
 };

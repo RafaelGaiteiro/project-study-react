@@ -7,6 +7,7 @@ import { MainBox } from "../../atoms/MainBox";
 import { Text } from "../../atoms/Text";
 import { Box } from "../../atoms/Box";
 import { Topic } from "../../atoms/Topic";
+import { InputGroup } from "../../atoms/InputGroup";
 
 export const Put = () => {
   const [id, setId] = useState<string>("");
@@ -29,26 +30,28 @@ export const Put = () => {
             id deve estar entre 1 e 100.
           </Text>
           <Topic>
-            <Input
-              type="text"
-              placeholder="Escreva o id"
-              onChange={(e) => setId(e.target.value)}
-            />
-            <Input
-              type="text"
-              placeholder="Escreva o id de usuário"
-              onChange={(e) => setUserId(e.target.value)}
-            />
-            <Input
-              type="text"
-              placeholder="Escreva o título"
-              onChange={(e) => setTitle(e.target.value)}
-            />
-            <Input
-              type="text"
-              placeholder="Escreva a descrição"
-              onChange={(e) => setDescription(e.target.value)}
-            />
+            <InputGroup>
+              <Input
+                type="text"
+                placeholder="Escreva o id"
+                onChange={(e) => setId(e.target.value)}
+              />
+              <Input
+                type="text"
+                placeholder="Escreva o id de usuário"
+                onChange={(e) => setUserId(e.target.value)}
+              />
+              <Input
+                type="text"
+                placeholder="Escreva o título"
+                onChange={(e) => setTitle(e.target.value)}
+              />
+              <Input
+                type="text"
+                placeholder="Escreva a descrição"
+                onChange={(e) => setDescription(e.target.value)}
+              />
+            </InputGroup>
             <Button onClick={handleSubmit}>Atualizar</Button>
           </Topic>
         </Box>

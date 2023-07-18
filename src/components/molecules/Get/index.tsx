@@ -7,6 +7,7 @@ import { MainBox } from "../../atoms/MainBox";
 import { IData, useJSONPlaceholder } from "../../../context/JSONPlaceholder";
 import { Button } from "../../atoms/Button";
 import { Box } from "../../atoms/Box";
+import { Topic } from "../../atoms/Topic";
 
 export const Get = () => {
   const [filteredData, setFilteredData] = useState<IData[]>([]);
@@ -33,20 +34,22 @@ export const Get = () => {
           selecionar um ID de Usuário:
         </Text>
         <Flex gap="4px" alignitems="center">
-          <Select onChange={(e) => setSelectedUserId(Number(e.target.value))}>
-            <option>Selecione</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-            <option>6</option>
-            <option>7</option>
-            <option>8</option>
-            <option>9</option>
-            <option>10</option>
-          </Select>
-          <Button onClick={handleRequestGet}>Fazer Requisição</Button>
+          <Topic>
+            <Select onChange={(e) => setSelectedUserId(Number(e.target.value))}>
+              <option>Selecione</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+              <option>9</option>
+              <option>10</option>
+            </Select>
+            <Button onClick={handleRequestGet}>Fazer Requisição</Button>
+          </Topic>
         </Flex>
       </Box>
       {/* Exibe os resultados filtrados */}

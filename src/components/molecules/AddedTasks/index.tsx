@@ -4,7 +4,6 @@ import { Button } from "../../atoms/Button";
 import { ITask, useTasks } from "../../../context/TasksContext";
 import { NewTasks } from "../../organisms/NewTasks";
 import { Text } from "../../atoms/Text";
-import { Box } from "../../atoms/Box";
 import { MainBox } from "../../atoms/MainBox";
 import { useAlert } from "../../../context/Alert";
 
@@ -55,11 +54,9 @@ export const AddedTasks = () => {
       <BoxLeft>
         <MainBox title="Tarefas a fazer" justifycontent="space-between">
           <Text size="7">{newTaskCount}</Text>
-          <Box>
-            <NewTasks />
-          </Box>
+          <NewTasks />
           {newTasks.map((task: ITask) => (
-            <TaskCard key={task.id}>
+            <Flex key={task.id}>
               <TextTop>{task.title}</TextTop>
               <TextBottom>{task.description}</TextBottom>
               <Flex flexdirection="row" gap="4px">
@@ -80,7 +77,7 @@ export const AddedTasks = () => {
                   Concluir
                 </Button>
               </Flex>
-            </TaskCard>
+            </Flex>
           ))}
         </MainBox>
       </BoxLeft>
