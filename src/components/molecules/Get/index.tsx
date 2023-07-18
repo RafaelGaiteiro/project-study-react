@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { TextContainer } from "../../atoms/TextContainer";
 import { Text } from "../../atoms/Text";
 import { Select } from "../../atoms/ComboBox";
-import { Container } from "../../atoms/Container";
+import { Flex } from "../../atoms/Flex";
 import { MainBox } from "../../atoms/MainBox";
 import { IData, useJSONPlaceholder } from "../../../context/JSONPlaceholder";
 import { Button } from "../../atoms/Button";
@@ -32,7 +32,7 @@ export const Get = () => {
           Para fazer a requisição GET e acessar os dados vindos da API você deve
           selecionar um ID de Usuário:
         </Text>
-        <Container gap="4px" alignitems="center">
+        <Flex gap="4px" alignitems="center">
           <Select onChange={(e) => setSelectedUserId(Number(e.target.value))}>
             <option>Selecione</option>
             <option>1</option>
@@ -47,7 +47,7 @@ export const Get = () => {
             <option>10</option>
           </Select>
           <Button onClick={handleRequestGet}>Fazer Requisição</Button>
-        </Container>
+        </Flex>
       </Box>
       {/* Exibe os resultados filtrados */}
       {filteredData &&

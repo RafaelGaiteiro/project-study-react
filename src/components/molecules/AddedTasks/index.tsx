@@ -1,5 +1,5 @@
 import { TaskCard, BoxLeft, BoxRight, TextTop, TextBottom } from "./styles";
-import { Container } from "../../atoms/Container";
+import { Flex } from "../../atoms/Flex";
 import { Button } from "../../atoms/Button";
 import { ITask, useTasks } from "../../../context/TasksContext";
 import { NewTasks } from "../../organisms/NewTasks";
@@ -51,7 +51,7 @@ export const AddedTasks = () => {
   // const taskCounter = newTaskCount + completedTaskCount; // Quantidade total de tarefas
 
   return (
-    <Container gap="10px">
+    <Flex gap="10px">
       <BoxLeft>
         <MainBox title="Tarefas a fazer" justifycontent="space-between">
           <Text size="7">{newTaskCount}</Text>
@@ -62,7 +62,7 @@ export const AddedTasks = () => {
             <TaskCard key={task.id}>
               <TextTop>{task.title}</TextTop>
               <TextBottom>{task.description}</TextBottom>
-              <Container flexdirection="row" gap="4px">
+              <Flex flexdirection="row" gap="4px">
                 <Button
                   onClick={() =>
                     handleEditNewTask(task.id, task.title, task.description)
@@ -79,7 +79,7 @@ export const AddedTasks = () => {
                 >
                   Concluir
                 </Button>
-              </Container>
+              </Flex>
             </TaskCard>
           ))}
         </MainBox>
@@ -93,7 +93,7 @@ export const AddedTasks = () => {
               <TaskCard key={task.id}>
                 <TextTop>{task.title}</TextTop>
                 <TextBottom>{task.description}</TextBottom>
-                <Container flexdirection="row" gap="4px">
+                <Flex flexdirection="row" gap="4px">
                   <Button
                     onClick={() =>
                       handleReturnTask(task.id, task.title, task.description)
@@ -108,12 +108,12 @@ export const AddedTasks = () => {
                   >
                     Remover
                   </Button>
-                </Container>
+                </Flex>
               </TaskCard>
             ))}
           </MainBox>
         )}
       </BoxRight>
-    </Container>
+    </Flex>
   );
 };

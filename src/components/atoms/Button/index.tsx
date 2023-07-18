@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { Container } from "../Container";
+import { Flex } from "../Flex";
 import { ButtonComponent } from "./styles";
 
 export type ButtonProps = {
@@ -12,8 +12,8 @@ export type ButtonProps = {
 
 export const Button = ({ children, ...props }: ButtonProps) => {
   return (
-    <Container>
+    <Flex>
       <ButtonComponent {...props}>{children}</ButtonComponent>
-    </Container>
+    </Flex>
   );
 };

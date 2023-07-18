@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useJSONPlaceholder } from "../../../context/JSONPlaceholder";
 import { Button } from "../../atoms/Button";
-import { Container } from "../../atoms/Container";
+import { Flex } from "../../atoms/Flex";
 import { Input } from "../../atoms/Input";
 import { InputGroup } from "../../atoms/InputGroup";
 import { MainBox } from "../../atoms/MainBox";
@@ -21,7 +21,7 @@ export const Put = () => {
   }
 
   return (
-    <Container>
+    <Flex>
       <MainBox title="PUT" width="50%">
         <Box>
           <Text size="4" disablebackground="true">
@@ -53,6 +53,6 @@ export const Put = () => {
           </InputGroup>
         </Box>
       </MainBox>
-    </Container>
+    </Flex>
   );
 };

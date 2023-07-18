@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Container } from "../../atoms/Container";
+import { Flex } from "../../atoms/Flex";
 import { Input } from "../../atoms/Input";
 import { Button } from "../../atoms/Button";
 import { useTasks } from "../../../context/TasksContext";
@@ -87,7 +87,7 @@ export const NewTasks = () => {
           onChange={(event) => setDescription(event.target.value)}
         />
       </InputGroup>
-      <Container flexdirection="row" width="100%" gap="10px">
+      <Flex flexdirection="row" width="100%" gap="10px">
         {!showEditingControls && (
           <>
             <Button onClick={handleAddNewTask}>Adicionar</Button>
@@ -106,7 +106,7 @@ export const NewTasks = () => {
             {alert.message}
           </Alert>
         ))}
-      </Container>
+      </Flex>
     </>
   );
 };

@@ -24,6 +24,6 @@ export interface IContainerProps {
   radius?: string;
 }
 
-export const Container = ({ children, ...props }: IContainerProps) => {
+export const Flex = ({ children, ...props }: IContainerProps) => {
   return <ContainerComponent {...props}>{children}</ContainerComponent>;
 };

@@ -1,4 +1,4 @@
-import { Container } from "../components/atoms/Container";
+import { Flex } from "../components/atoms/Flex";
 import { Text } from "../components/atoms/Text";
 import { TextContainer } from "../components/atoms/TextContainer";
 import { Title } from "../components/atoms/Title";
@@ -26,12 +26,12 @@ export const Data = () => {
           dos dados.
         </Text>
       </TextContainer>
-      <Container flexdirection="column" gap="4px">
+      <Flex flexdirection="column" gap="4px">
         <Get />
         <Post />
         <Put />
         <Delete />
-      </Container>
+      </Flex>
     </DefaultTemplate>
   );
 };

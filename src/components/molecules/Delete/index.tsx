@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useJSONPlaceholder } from "../../../context/JSONPlaceholder";
 import { Button } from "../../atoms/Button";
-import { Container } from "../../atoms/Container";
+import { Flex } from "../../atoms/Flex";
 import { Input } from "../../atoms/Input";
 import { InputGroup } from "../../atoms/InputGroup";
 import { MainBox } from "../../atoms/MainBox";
@@ -17,7 +17,7 @@ export const Delete = () => {
   }
 
   return (
-    <Container>
+    <Flex>
       <MainBox title="DELETE" width="50%">
         <Box>
           <Text size="4" disablebackground="true">
@@ -34,6 +34,6 @@ export const Delete = () => {
           </InputGroup>
         </Box>
       </MainBox>
-    </Container>
+    </Flex>
   );
 };
