@@ -12,7 +12,7 @@ export type ButtonProps = {
 
 export const Button = ({ children, ...props }: ButtonProps) => {
   return (
-    <Flex>
+    <Flex padding="4px 0">
       <ButtonComponent {...props}>{children}</ButtonComponent>
     </Flex>
   );

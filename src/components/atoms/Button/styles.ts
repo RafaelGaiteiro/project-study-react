@@ -26,12 +26,12 @@ export const ButtonComponent = styled.button<ButtonProps>`
   &&:hover {
     color: white;
     background-color: #1a6e84;
-    transform: scale(1.03);
+    transform: scale(1.01, 1.03);
   }
 
   &&:active {
     color: white;
     background-color: #154c5e;
-    transform: scale(1.05);
+    transform: scale(1.01, 1.05);
   }
 `;

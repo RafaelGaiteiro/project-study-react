@@ -3,10 +3,11 @@ import { useJSONPlaceholder } from "../../../context/JSONPlaceholder";
 import { Button } from "../../atoms/Button";
 import { Flex } from "../../atoms/Flex";
 import { Input } from "../../atoms/Input";
-import { InputGroup } from "../../atoms/InputGroup";
+
 import { MainBox } from "../../atoms/MainBox";
 import { Text } from "../../atoms/Text";
 import { Box } from "../../atoms/Box";
+import { Topic } from "../../atoms/Topic";
 
 export const Delete = () => {
   const [id, setId] = useState<string>("1");
@@ -24,14 +25,14 @@ export const Delete = () => {
             Para acessar os dados vindos da api você deve selecionar um ID de
             Usuário:
           </Text>
-          <InputGroup>
+          <Topic>
             <Input
               type="text"
               placeholder="Escreva o id"
               onChange={(e) => setId(e.target.value)}
             />
             <Button onClick={handleSubmit}>Deletar</Button>
-          </InputGroup>
+          </Topic>
         </Box>
       </MainBox>
     </Flex>

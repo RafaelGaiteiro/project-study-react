@@ -3,10 +3,10 @@ import { useJSONPlaceholder } from "../../../context/JSONPlaceholder";
 import { Button } from "../../atoms/Button";
 import { Flex } from "../../atoms/Flex";
 import { Input } from "../../atoms/Input";
-import { InputGroup } from "../../atoms/InputGroup";
 import { MainBox } from "../../atoms/MainBox";
 import { Text } from "../../atoms/Text";
 import { Box } from "../../atoms/Box";
+import { Topic } from "../../atoms/Topic";
 
 export const Post = () => {
   const [userId, setUserId] = useState<string>("");
@@ -26,7 +26,7 @@ export const Post = () => {
           <Text size="4" disablebackground="true">
             Para fazer a requisição POST preencha os campos e clique em enviar.
           </Text>
-          <InputGroup>
+          <Topic>
             <Input
               type="text"
               placeholder="Escreva o id de usuário"
@@ -43,7 +43,7 @@ export const Post = () => {
               onChange={(e) => setDescription(e.target.value)}
             />
             <Button onClick={handleSubmit}>Enviar</Button>
-          </InputGroup>
+          </Topic>
         </Box>
       </MainBox>
     </Flex>

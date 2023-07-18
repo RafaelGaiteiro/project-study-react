@@ -6,13 +6,14 @@ import { useForm } from "react-hook-form";
 import { Box } from "../../atoms/Box";
 import { Button } from "../../atoms/Button";
 import { Input } from "../../atoms/Input";
-import { InputGroup } from "../../atoms/InputGroup";
 import { Label } from "../../atoms/Label";
 import { MainBox } from "../../atoms/MainBox";
 import { MessageAlert } from "../../atoms/MessageAlert";
 import { viaCep } from "../../../services/viaCep";
 import { useInformationForm } from "../../../context/FormContext";
 import { is18OrOlder } from "../../../utils/is18OrOlder";
+import { Topic } from "../../atoms/Topic";
+import { InputGroup } from "../../atoms/InputGroup";
 
 const schema = object({
   name: string().required("Você precisa informar o seu nome."),
@@ -98,170 +99,208 @@ export const InformationForm = () => {
       <form onSubmit={handleSubmit(handleForm)} noValidate>
         <MainBox title="Formulário" width="100%">
           <Box>
-            <InputGroup title="Informações Pessoais" leftspacing="true">
-              <Label htmlFor="name">Nome</Label>
-              <Input
-                required
-                type="text"
-                placeholder="Digite o seu nome"
-                {...register("name")}
-              />
-              {errors?.name && (
-                <MessageAlert>{errors?.name?.message}</MessageAlert>
-              )}
-              <Label htmlFor="surname">Sobrenome</Label>
-              <Input
-                type="text"
-                placeholder="Digite o seu sobrenome"
-                {...register("surname")}
-              />
-              {errors?.surname && (
-                <MessageAlert>{errors?.surname?.message}</MessageAlert>
-              )}
-              <Label htmlFor="cpf">CPF</Label>
-              <Input
-                type="text"
-                placeholder="Digite o seu CPF"
-                {...register("cpf")}
-              />
-              {errors?.cpf && (
-                <MessageAlert>{errors?.cpf?.message}</MessageAlert>
-              )}
-              <Label htmlFor="rg">RG</Label>
-              <Input
-                type="text"
-                placeholder="Digite o seu RG"
-                {...register("rg")}
-              />
-              {errors?.rg && <MessageAlert>{errors?.rg?.message}</MessageAlert>}
-              <Label htmlFor="birth">Data de Nascimento</Label>
-              <Input type="date" {...register("birth")} />
-              {errors?.birth && (
-                <MessageAlert>{errors?.birth?.message}</MessageAlert>
-              )}
-            </InputGroup>
-            <InputGroup title="Filiação" leftspacing="true">
-              <Label htmlFor="fathersName">Nome do Pai</Label>
-              <Input
-                type="text"
-                placeholder="Digite o nome do seu pai"
-                {...register("fathersName")}
-              />
-              {errors?.fathersName && (
-                <MessageAlert>{errors?.fathersName?.message}</MessageAlert>
-              )}
-              <Label htmlFor="mothersName">Nome da Mãe</Label>
-              <Input
-                type="text"
-                placeholder="Digite o nome da sua mãe"
-                {...register("mothersName")}
-              />
-              {errors?.mothersName && (
-                <MessageAlert>{errors?.mothersName?.message}</MessageAlert>
-              )}
-            </InputGroup>
-            <InputGroup title="Contato" leftspacing="true">
-              <Label htmlFor="telephone">Telefone (Celular)</Label>
-              <Input
-                type="text"
-                placeholder="Digite o seu telefone"
-                {...register("telephone")}
-              />
-              {errors?.telephone && (
-                <MessageAlert>{errors?.telephone?.message}</MessageAlert>
-              )}
-              <Label htmlFor="secondaryPhone">Telefone Secundário</Label>
-              <Input
-                type="text"
-                placeholder="Digite o seu telefone secundário"
-                {...register("secondaryPhone")}
-              />
-              {errors?.secondaryPhone && (
-                <MessageAlert>{errors?.secondaryPhone?.message}</MessageAlert>
-              )}
-            </InputGroup>
-            <InputGroup title="Dados de Acesso" leftspacing="true">
-              <Label htmlFor="password">Senha</Label>
-              <Input
-                type="password"
-                placeholder="Digite a sua senha"
-                {...register("password")}
-              />
-              {errors?.password && (
-                <MessageAlert>{errors?.password?.message}</MessageAlert>
-              )}
-              <Label htmlFor="passwordConfirmation">Confirmação de Senha</Label>
-              <Input
-                type="password"
-                placeholder="Digite a sua senha novamente"
-                {...register("passwordConfirmation")}
-              />
-              {errors?.passwordConfirmation && (
-                <MessageAlert>
-                  {errors?.passwordConfirmation?.message}
-                </MessageAlert>
-              )}
-            </InputGroup>
-            <InputGroup title="Endereço" leftspacing="true">
-              <Label htmlFor="cep">CEP</Label>
-              <Input
-                type="text"
-                placeholder="Digite o seu CEP"
-                {...register("cep")}
-              />
-              {errors?.cep && (
-                <MessageAlert>{errors?.cep?.message}</MessageAlert>
-              )}
-              <Label htmlFor="street">Rua</Label>
-              <Input
-                id="rua"
-                type="text"
-                placeholder="Digite a sua rua"
-                {...register("street")}
-              />
-              {errors?.street && (
-                <MessageAlert>{errors?.street?.message}</MessageAlert>
-              )}
-              <Label htmlFor="neighborhood">Bairro</Label>
-              <Input
-                type="text"
-                placeholder="Digite o seu bairro"
-                {...register("neighborhood")}
-              />
-              {errors?.neighborhood && (
-                <MessageAlert>{errors?.neighborhood?.message}</MessageAlert>
-              )}
-              <Label htmlFor="city">Cidade</Label>
-              <Input
-                type="text"
-                placeholder="Digite o sua cidade"
-                {...register("city")}
-              />
-              {errors?.city && (
-                <MessageAlert>{errors?.city?.message}</MessageAlert>
-              )}
-              <Label htmlFor="state">Estado</Label>
-              <Input
-                type="text"
-                placeholder="Digite o seu estado"
-                {...register("state")}
-              />
-              {errors?.state && (
-                <MessageAlert>{errors?.state?.message}</MessageAlert>
-              )}
-              <Label htmlFor="country">País</Label>
-              <Input
-                type="text"
-                placeholder="Digite o seu país"
-                {...register("country")}
-              />
-              {errors?.country && (
-                <MessageAlert>{errors?.country?.message}</MessageAlert>
-              )}
+            <Topic title="Informações Pessoais">
+              <InputGroup>
+                <Label htmlFor="name">Nome</Label>
+                <Input
+                  required
+                  type="text"
+                  placeholder="Digite o seu nome"
+                  {...register("name")}
+                />
+                {errors?.name && (
+                  <MessageAlert>{errors?.name?.message}</MessageAlert>
+                )}
+              </InputGroup>
+              <InputGroup>
+                <Label htmlFor="surname">Sobrenome</Label>
+                <Input
+                  type="text"
+                  placeholder="Digite o seu sobrenome"
+                  {...register("surname")}
+                />
+                {errors?.surname && (
+                  <MessageAlert>{errors?.surname?.message}</MessageAlert>
+                )}
+              </InputGroup>
+              <InputGroup>
+                <Label htmlFor="cpf">CPF</Label>
+                <Input
+                  type="text"
+                  placeholder="Digite o seu CPF"
+                  {...register("cpf")}
+                />
+                {errors?.cpf && (
+                  <MessageAlert>{errors?.cpf?.message}</MessageAlert>
+                )}
+              </InputGroup>
+              <InputGroup>
+                <Label htmlFor="rg">RG</Label>
+                <Input
+                  type="text"
+                  placeholder="Digite o seu RG"
+                  {...register("rg")}
+                />
+                {errors?.rg && (
+                  <MessageAlert>{errors?.rg?.message}</MessageAlert>
+                )}
+              </InputGroup>
+              <InputGroup>
+                <Label htmlFor="birth">Data de Nascimento</Label>
+                <Input type="date" {...register("birth")} />
+                {errors?.birth && (
+                  <MessageAlert>{errors?.birth?.message}</MessageAlert>
+                )}
+              </InputGroup>
+            </Topic>
+            <Topic title="Filiação">
+              <InputGroup>
+                <Label htmlFor="fathersName">Nome do Pai</Label>
+                <Input
+                  type="text"
+                  placeholder="Digite o nome do seu pai"
+                  {...register("fathersName")}
+                />
+                {errors?.fathersName && (
+                  <MessageAlert>{errors?.fathersName?.message}</MessageAlert>
+                )}
+              </InputGroup>
+              <InputGroup>
+                <Label htmlFor="mothersName">Nome da Mãe</Label>
+                <Input
+                  type="text"
+                  placeholder="Digite o nome da sua mãe"
+                  {...register("mothersName")}
+                />
+                {errors?.mothersName && (
+                  <MessageAlert>{errors?.mothersName?.message}</MessageAlert>
+                )}
+              </InputGroup>
+            </Topic>
+            <Topic title="Contato">
+              <InputGroup>
+                <Label htmlFor="telephone">Telefone (Celular)</Label>
+                <Input
+                  type="text"
+                  placeholder="Digite o seu telefone"
+                  {...register("telephone")}
+                />
+                {errors?.telephone && (
+                  <MessageAlert>{errors?.telephone?.message}</MessageAlert>
+                )}
+              </InputGroup>
+              <InputGroup>
+                <Label htmlFor="secondaryPhone">Telefone Secundário</Label>
+                <Input
+                  type="text"
+                  placeholder="Digite o seu telefone secundário"
+                  {...register("secondaryPhone")}
+                />
+                {errors?.secondaryPhone && (
+                  <MessageAlert>{errors?.secondaryPhone?.message}</MessageAlert>
+                )}
+              </InputGroup>
+            </Topic>
+            <Topic title="Dados de Acesso">
+              <InputGroup>
+                <Label htmlFor="password">Senha</Label>
+                <Input
+                  type="password"
+                  placeholder="Digite a sua senha"
+                  {...register("password")}
+                />
+                {errors?.password && (
+                  <MessageAlert>{errors?.password?.message}</MessageAlert>
+                )}
+              </InputGroup>{" "}
+              <InputGroup>
+                <Label htmlFor="passwordConfirmation">
+                  Confirmação de Senha
+                </Label>
+                <Input
+                  type="password"
+                  placeholder="Digite a sua senha novamente"
+                  {...register("passwordConfirmation")}
+                />
+                {errors?.passwordConfirmation && (
+                  <MessageAlert>
+                    {errors?.passwordConfirmation?.message}
+                  </MessageAlert>
+                )}
+              </InputGroup>
+            </Topic>
+            <Topic title="Endereço">
+              <InputGroup>
+                <Label htmlFor="cep">CEP</Label>
+                <Input
+                  type="text"
+                  placeholder="Digite o seu CEP"
+                  {...register("cep")}
+                />
+                {errors?.cep && (
+                  <MessageAlert>{errors?.cep?.message}</MessageAlert>
+                )}
+              </InputGroup>
+              <InputGroup>
+                <Label htmlFor="street">Rua</Label>
+                <Input
+                  id="rua"
+                  type="text"
+                  placeholder="Digite a sua rua"
+                  {...register("street")}
+                />
+                {errors?.street && (
+                  <MessageAlert>{errors?.street?.message}</MessageAlert>
+                )}
+              </InputGroup>
+              <InputGroup>
+                <Label htmlFor="neighborhood">Bairro</Label>
+                <Input
+                  type="text"
+                  placeholder="Digite o seu bairro"
+                  {...register("neighborhood")}
+                />
+                {errors?.neighborhood && (
+                  <MessageAlert>{errors?.neighborhood?.message}</MessageAlert>
+                )}
+              </InputGroup>
+              <InputGroup>
+                <Label htmlFor="city">Cidade</Label>
+                <Input
+                  type="text"
+                  placeholder="Digite o sua cidade"
+                  {...register("city")}
+                />
+                {errors?.city && (
+                  <MessageAlert>{errors?.city?.message}</MessageAlert>
+                )}
+              </InputGroup>
+              <InputGroup>
+                <Label htmlFor="state">Estado</Label>
+                <Input
+                  type="text"
+                  placeholder="Digite o seu estado"
+                  {...register("state")}
+                />
+                {errors?.state && (
+                  <MessageAlert>{errors?.state?.message}</MessageAlert>
+                )}
+              </InputGroup>
+              <InputGroup>
+                <Label htmlFor="country">País</Label>
+                <Input
+                  type="text"
+                  placeholder="Digite o seu país"
+                  {...register("country")}
+                />
+                {errors?.country && (
+                  <MessageAlert>{errors?.country?.message}</MessageAlert>
+                )}
+              </InputGroup>
               <Button type="submit" width="100%">
                 Enviar
               </Button>
-            </InputGroup>
+            </Topic>
           </Box>
         </MainBox>
       </form>

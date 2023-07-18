@@ -3,10 +3,10 @@ import { Flex } from "../../atoms/Flex";
 import { Input } from "../../atoms/Input";
 import { Button } from "../../atoms/Button";
 import { useTasks } from "../../../context/TasksContext";
-import { InputGroup } from "../../atoms/InputGroup";
 import { Alert } from "../../atoms/Alert";
 import { TextArea } from "../../atoms/TextArea";
 import { useAlert } from "../../../context/Alert";
+import { Topic } from "../../atoms/Topic";
 
 export const NewTasks = () => {
   const [showEditingControls] = useState<boolean>(false);
@@ -73,7 +73,7 @@ export const NewTasks = () => {
 
   return (
     <>
-      <InputGroup>
+      <Topic>
         <Input
           type="text"
           placeholder="Digite o título da tarefa"
@@ -86,7 +86,7 @@ export const NewTasks = () => {
           value={description}
           onChange={(event) => setDescription(event.target.value)}
         />
-      </InputGroup>
+      </Topic>
       <Flex flexdirection="row" width="100%" gap="10px">
         {!showEditingControls && (
           <>
