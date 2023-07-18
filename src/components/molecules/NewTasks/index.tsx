@@ -1,9 +1,7 @@
-import { useState } from "react";
 import { Flex } from "../../atoms/Flex";
 import { Input } from "../../atoms/Input";
 import { Button } from "../../atoms/Button";
 import { useTasks } from "../../../context/TasksContext";
-import { Alert } from "../../atoms/Alert";
 import { TextArea } from "../../atoms/TextArea";
 import { useAlert } from "../../../context/Alert";
 import { Topic } from "../../atoms/Topic";
@@ -11,7 +9,7 @@ import { Box } from "../../atoms/Box";
 import { InputGroup } from "../../atoms/InputGroup";
 
 export const NewTasks = () => {
-  const [showEditingControls] = useState<boolean>(false);
+  const { showAlert } = useAlert();
   const {
     setTitle,
     title,
@@ -19,8 +17,10 @@ export const NewTasks = () => {
     description,
     addNewTask,
     addFakeTasks,
+    setShowFlagEditingControls,
+    showFlagEditingControls,
+    setDisabled,
   } = useTasks();
-  const { alerts, showAlert } = useAlert();
 
   function handleAddNewTask() {
     if (title === "") {
@@ -61,6 +61,9 @@ export const NewTasks = () => {
       // Limpa os campos
       setTitle("");
       setDescription("");
+      // Mostra os controles de adicionar
+      setShowFlagEditingControls(false);
+      setDisabled(false);
     }
   }
 
@@ -71,6 +74,7 @@ export const NewTasks = () => {
     });
     setTitle("");
     setDescription("");
+    setShowFlagEditingControls(false);
   }
 
   return (
@@ -91,24 +95,19 @@ export const NewTasks = () => {
           />
         </InputGroup>
         <Flex flexdirection="row" width="100%" gap="10px">
-          {!showEditingControls && (
+          {!showFlagEditingControls && (
             <>
               <Button onClick={handleAddNewTask}>Adicionar</Button>
               <Button onClick={addFakeTasks}>Gerar Tarefas</Button>
             </>
           )}
 
-          {showEditingControls && (
+          {showFlagEditingControls && (
             <>
               <Button onClick={handleSaveTask}>Salvar</Button>
               <Button onClick={handleDelete}>Remover</Button>
             </>
           )}
-          {alerts.map((alert, index) => (
-            <Alert key={index} backgroundcolor={alert.backgroundColor}>
-              {alert.message}
-            </Alert>
-          ))}
         </Flex>
       </Topic>
     </Box>

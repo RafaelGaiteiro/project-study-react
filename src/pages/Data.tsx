@@ -23,7 +23,7 @@ export const Data = () => {
         </Text>
         <Text size="4">
           Você pode ver no console do navegador o retorno da API com a resposta
-          dos dados.
+          dos dados. Para isso pressione simultaneamente Ctrl + Shift + J.
         </Text>
       </TextContainer>
       <Flex flexdirection="column" gap="4px">

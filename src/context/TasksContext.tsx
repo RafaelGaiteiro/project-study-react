@@ -35,6 +35,9 @@ interface ITasksContext {
   disabled: boolean;
   // Gera as tarefas chamando os dados da Api
   addFakeTasks(): void;
+  // Flag
+  setShowFlagEditingControls: React.Dispatch<React.SetStateAction<boolean>>;
+  showFlagEditingControls: boolean;
 }
 
 const TasksContext = createContext<ITasksContext>({} as ITasksContext);
@@ -51,6 +54,8 @@ const TasksProvider = ({ children }: TasksProviderProps) => {
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   const [disabled, setDisabled] = useState<boolean>(false);
+  const [showFlagEditingControls, setShowFlagEditingControls] =
+    useState<boolean>(false);
 
   // Pegando tarefas com API
   const fetchPosts = async () => {
@@ -80,6 +85,7 @@ const TasksProvider = ({ children }: TasksProviderProps) => {
       message: "Você gerou tarefas com dados da API JSONPlaceholder!",
       backgroundColor: "#a87364",
     });
+    setDisabled(false);
     fetchPosts(); // Chamamos a função que chama os posts
   }
 
@@ -139,6 +145,9 @@ const TasksProvider = ({ children }: TasksProviderProps) => {
         disabled,
         // Gera as tarefas chamando os dados da Api
         addFakeTasks,
+        // Flag
+        setShowFlagEditingControls,
+        showFlagEditingControls,
       }}
     >
       {children}

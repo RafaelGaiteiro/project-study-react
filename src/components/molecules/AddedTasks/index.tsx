@@ -2,7 +2,7 @@ import { TaskCard, BoxLeft, BoxRight, TextTop, TextBottom } from "./styles";
 import { Flex } from "../../atoms/Flex";
 import { Button } from "../../atoms/Button";
 import { ITask, useTasks } from "../../../context/TasksContext";
-import { NewTasks } from "../../organisms/NewTasks";
+import { NewTasks } from "../NewTasks";
 import { Text } from "../../atoms/Text";
 import { MainBox } from "../../atoms/MainBox";
 import { useAlert } from "../../../context/Alert";
@@ -17,12 +17,19 @@ export const AddedTasks = () => {
     addCompletedTask,
     removeCompletedTask,
     editNewTask,
+    setDisabled,
     disabled,
+    setShowFlagEditingControls,
   } = useTasks();
 
   function handleAddTask(id: string, title: string, description: string) {
     addCompletedTask(id, title, description);
     removeNewTask(id);
+    showAlert({
+      message: "Tarefa concluída com sucesso!",
+      backgroundColor: "#1a65af",
+    });
+    setDisabled(false);
   }
 
   function handleCompletedTask(id: string) {
@@ -35,9 +42,11 @@ export const AddedTasks = () => {
       message: "Você está editando a tarefa!",
       backgroundColor: "#d18e54",
     });
-    console.log("aqui");
+    // Remove a tarefa
     removeNewTask(id);
+    // Passa os dados necessários para a função que vai lidar com isso
     editNewTask(id, title, description);
+    setShowFlagEditingControls(true);
   }
 
   function handleReturnTask(id: string, title: string, description: string) {
@@ -56,7 +65,7 @@ export const AddedTasks = () => {
           <Text size="7">{newTaskCount}</Text>
           <NewTasks />
           {newTasks.map((task: ITask) => (
-            <Flex key={task.id}>
+            <TaskCard key={task.id}>
               <TextTop>{task.title}</TextTop>
               <TextBottom>{task.description}</TextBottom>
               <Flex flexdirection="row" gap="4px">
@@ -64,7 +73,7 @@ export const AddedTasks = () => {
                   onClick={() =>
                     handleEditNewTask(task.id, task.title, task.description)
                   }
-                  // disabled={disabled}
+                  disabled={disabled}
                 >
                   Editar
                 </Button>
@@ -77,7 +86,7 @@ export const AddedTasks = () => {
                   Concluir
                 </Button>
               </Flex>
-            </Flex>
+            </TaskCard>
           ))}
         </MainBox>
       </BoxLeft>
